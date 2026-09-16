@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rate My Terrain — 7e Médecine Algérie</title>
+  <meta name="description" content="Tableau comparatif interactif des terrains d'internat pour étudiants en 7e année de médecine. Évaluation de la charge, toxicité, formation, liberté et ambiance." />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════════ -->
+  <header class="app-header">
+    <div class="header-badge">🏥 7e Médecine · Algérie · 2026</div>
+    <h1 class="header-title">Rate My Terrain</h1>
+    <p class="header-subtitle">
+      Comparaison interactive des terrains d'internat — basé sur les témoignages réels des internes.
+      11 terrains analysés sur 5 critères.
+    </p>
+  </header>
+
+  <!-- ══════════════════════════════════════════════
+       LEGEND NOTE
+  ══════════════════════════════════════════════ -->
+  <div class="legend-note">
+    <strong>📊 Comment lire les scores :</strong>
+    &nbsp;·&nbsp; <strong>⚡ Charge</strong> : élevé = beaucoup de travail (journées, gardes)
+    &nbsp;·&nbsp; <strong>☠️ Toxicité</strong> : élevé = équipe difficile / stress élevé
+    &nbsp;·&nbsp; <strong>🎓 Formation</strong> : élevé = très formateur
+    &nbsp;·&nbsp; <strong>🕊️ Liberté</strong> : élevé = beaucoup de roulement / temps libre
+    &nbsp;·&nbsp; <strong>🤝 Ambiance</strong> : élevé = très bonne atmosphère
+    &nbsp;·&nbsp; Le <strong>Score Global</strong> pondère tous ces facteurs.
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STATS BANNER
+  ══════════════════════════════════════════════ -->
+  <section class="stats-section" aria-label="Statistiques rapides">
+    <div id="stats-banner"></div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CONTROLS BAR
+  ══════════════════════════════════════════════ -->
+  <div class="controls-bar" role="toolbar" aria-label="Filtres et tri">
+    <label for="sort-select">Trier par :</label>
+    <select id="sort-select" class="ctrl-select" aria-label="Critère de tri">
+      <option value="overall_desc">⭐ Score Global ↓</option>
+      <option value="formation_desc">🎓 Formation ↓</option>
+      <option value="charge_asc">⚡ Charge ↑ (moins lourd)</option>
+      <option value="toxicite_asc">☠️ Toxicité ↑ (moins toxique)</option>
+      <option value="liberte_desc">🕊️ Liberté ↓</option>
+      <option value="ambiance_desc">🤝 Ambiance ↓</option>
+    </select>
+
+    <hr class="controls-divider" />
+
+    <label for="filter-specialty">Spécialité :</label>
+    <select id="filter-specialty" class="ctrl-select" aria-label="Filtre par spécialité">
+      <option value="all">Toutes les spécialités</option>
+      <option value="cardiologie">❤️ Cardiologie</option>
+      <option value="gastroentérologie">🫁 Gastroentérologie</option>
+      <option value="réanimation">🫀 Réanimation</option>
+      <option value="rhumatologie">🦴 Rhumatologie</option>
+      <option value="médecine interne">🏥 Médecine Interne</option>
+      <option value="endocrinologie">🧬 Endocrinologie</option>
+      <option value="diabétologie">🩺 Diabétologie</option>
+      <option value="oncologie">🎗️ Oncologie</option>
+      <option value="hématologie">🩸 Hématologie</option>
+      <option value="médecine légale">⚖️ Médecine Légale</option>
+      <option value="urologie">🔬 Urologie</option>
+      <option value="pneumologie">🫁 Pneumologie</option>
+      <option value="néphrologie">💧 Néphrologie</option>
+      <option value="ORL">👂 ORL</option>
+      <option value="hépatologie">🫀 Hépatologie</option>
+      <option value="infectiologie">🦠 Infectiologie</option>
+      <option value="dermatologie">🧴 Dermatologie</option>
+    </select>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       TERRAIN CARDS
+  ══════════════════════════════════════════════ -->
+  <section class="cards-section" aria-label="Fiches terrain">
+    <div id="terrain-grid" role="list"></div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       COMPARISON CHART
+  ══════════════════════════════════════════════ -->
+  <section class="compare-section" aria-label="Graphique comparatif">
+    <h2 class="section-title">📊 Comparaison par critère</h2>
+    <p class="section-sub">Sélectionnez un paramètre pour comparer tous les terrains.</p>
+    <div class="compare-controls">
+      <label for="compare-param">Critère :</label>
+      <select id="compare-param" class="ctrl-select" aria-label="Paramètre de comparaison">
+        <option value="overall">⭐ Score Global</option>
+        <option value="formation">🎓 Formation</option>
+        <option value="charge">⚡ Charge</option>
+        <option value="toxicite">☠️ Toxicité</option>
+        <option value="liberte">🕊️ Liberté</option>
+        <option value="ambiance">🤝 Ambiance</option>
+      </select>
+    </div>
+    <div class="compare-chart-wrap" role="img" aria-label="Graphique en barres de comparaison">
+      <canvas id="comparison-chart"></canvas>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       OVERVIEW RADAR
+  ══════════════════════════════════════════════ -->
+  <section class="overview-section" aria-label="Vue d'ensemble radar">
+    <h2 class="section-title">🕸️ Vue d'ensemble — Tous les terrains</h2>
+    <p class="section-sub">Radar multicouches montrant le profil complet de chaque terrain.</p>
+    <div class="overview-chart-wrap" role="img" aria-label="Graphique radar de tous les terrains">
+      <canvas id="overview-chart"></canvas>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       MODAL
+  ══════════════════════════════════════════════ -->
+  <div id="modal" role="dialog" aria-modal="true" aria-label="Détails du terrain">
+    <div id="modal-content"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="app-footer">
+    <p>
+      Rate My Terrain · 7e Médecine Algérie · 2026
+      &nbsp;·&nbsp; Basé sur les témoignages authentiques des internes
+      &nbsp;·&nbsp; Made with <span>♥</span> for future interns
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1997 @@
+// ============================================================
+//  TERRAIN DATA — Rated from real intern reviews (7e med)
+//  Scale: 1–10
+//  Charge    : 10 = maximum workload
+//  Toxicité  : 10 = very toxic team / environment
+//  Formation : 10 = exceptional learning
+//  Liberté   : 10 = maximum schedule freedom
+//  Ambiance  : 10 = best team atmosphere
+// ============================================================
+
+const TERRAINS = [
+  {
+    id: 1,
+    name: "REA Médicale",
+    hospital: "Beni Messous",
+    specialty: "réanimation",
+    icon: "🫀",
+    color: "#FF4D6D",
+    period: "Multi",
+    effectif: 6,
+    gardes: true,
+    gardeFreq: "Chaque 6j",
+    roulement: false,
+    scores: {
+      charge: 9,
+      toxicite: 1,
+      formation: 10,
+      liberte: 2,
+      ambiance: 10,
+    },
+    highlights: [
+      "Garde toutes les 6 nuits (24h)",
+      "5/5 — 9h → 13h30",
+      "Intubation, voie centrale, CAT",
+      "Équipe hayline — 9/10",
+      "Gazométrie chaque jour",
+      "Terrain des vrais médecins",
+    ],
+    badge: "🏆 Best Formation",
+    summary:
+      "Terrain ultra-formateur, équipe exceptionnelle mais très chargé. Le rythme intense en fait la meilleure école de la médecine pratique.",
+  },
+  {
+    id: 2,
+    name: "Cardio A2",
+    hospital: "Mustapha Basha",
+    specialty: "cardiologie",
+    icon: "❤️",
+    color: "#FF6B35",
+    period: "P3",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Chaque 10j",
+    roulement: true,
+    scores: {
+      charge: 6,
+      toxicite: 3,
+      formation: 8,
+      liberte: 6,
+      ambiance: 8,
+    },
+    highlights: [
+      "Gardes 24h (sem: 9h / WE: 10h)",
+      "Roulement 1 sur 3 pour le service",
+      "Coronographie et rythmologie",
+      "Colloques de cas du mercredi",
+      "Salle d'écho-cœurs disponible",
+      "Service en travaux — évolution future",
+    ],
+    badge: "📈 Bon Équilibre",
+    summary:
+      "Bon terrain cardiologique avec accès aux gestes techniques. Équipe sympa, roulement 1/3 pour le service. Gardes formatives.",
+  },
+  {
+    id: 3,
+    name: "Cardio",
+    hospital: "Parnet",
+    specialty: "cardiologie",
+    icon: "💓",
+    color: "#FF8C42",
+    period: "P3",
+    effectif: 10,
+    gardes: true,
+    gardeFreq: "Chaque 10j",
+    roulement: true,
+    scores: {
+      charge: 7,
+      toxicite: 2,
+      formation: 8,
+      liberte: 6,
+      ambiance: 9,
+    },
+    highlights: [
+      "10 internes — gardes 24h",
+      "Roulement service 1 sur 5",
+      "2 à 10 avis par jour en ambulance",
+      "Chambre de garde disponible",
+      "CDS strict mais correct",
+      "Équipe résidents hayline",
+    ],
+    badge: "🌟 Super Ambiance",
+    summary:
+      "Stage inoubliable selon les internes. Équipe exceptionnelle, gardes bénéfiques. La charge ambulances peut être lourde.",
+  },
+  {
+    id: 4,
+    name: "Gastro",
+    hospital: "Beni Messous",
+    specialty: "gastroentérologie",
+    icon: "🫁",
+    color: "#FFBE0B",
+    period: "P4",
+    effectif: 11,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: true,
+    scores: {
+      charge: 6,
+      toxicite: 3,
+      formation: 6,
+      liberte: 7,
+      ambiance: 6,
+    },
+    highlights: [
+      "Pas de gardes",
+      "Roulement 15j travail / 15j repos",
+      "HDJ très chargé — jusqu'à 16h",
+      "Service léger — sortie 12h",
+      "Roulement service / HDJ",
+      "CDS a demandé 6 internes par jour",
+    ],
+    badge: "⚖️ Roulement Idéal",
+    summary:
+      "Excellent roulement négocié (15j/15j). Service léger mais HDJ exigeant. Pas de gardes. Équipe mixte selon les unités.",
+  },
+  {
+    id: 5,
+    name: "Gastro",
+    hospital: "BEO",
+    specialty: "gastroentérologie",
+    icon: "🫁",
+    color: "#8AC926",
+    period: "P3",
+    effectif: 8,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: true,
+    scores: {
+      charge: 5,
+      toxicite: 1,
+      formation: 8,
+      liberte: 6,
+      ambiance: 10,
+    },
+    highlights: [
+      "8 internes en binômes sur 4 unités",
+      "5/5 matinée 9h → 12h",
+      "Roulement officieux 1s/2 possible",
+      "Équipe exceptionnelle (très bien classés)",
+      "Ponctions d'ascite, endoscopies",
+      "Responsable internes exemplaire",
+    ],
+    badge: "💎 Meilleure Équipe",
+    summary:
+      "Terrain équilibré entre formation et légèreté. Équipe exceptionnelle, responsable idéale. Recommandé si vous aimez la gastro.",
+  },
+  {
+    id: 6,
+    name: "Rhumato",
+    hospital: "Beni Messous",
+    specialty: "rhumatologie",
+    icon: "🦴",
+    color: "#1982C4",
+    period: "P4",
+    effectif: 5,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 4,
+      toxicite: 1,
+      formation: 7,
+      liberte: 4,
+      ambiance: 9,
+    },
+    highlights: [
+      "5/5 pointage 9h–15h",
+      "Pas de gardes, week-end libre",
+      "Consulte, HDJ, DMO, écho, capillaro",
+      "Infiltrations et gestes",
+      "Présence obligatoire — pas de roulement",
+      "Équipe très gentille",
+    ],
+    badge: "☀️ Terrain Calme",
+    summary:
+      "Terrain léger avec bonne formation rhumatologique. Pas de gardes, WE libres. La présence obligatoire sans roulement peut peser sur 3 mois.",
+  },
+  {
+    id: 7,
+    name: "Endocrino",
+    hospital: "BEO",
+    specialty: "endocrinologie",
+    icon: "🧬",
+    color: "#6A4C93",
+    period: "P3",
+    effectif: 6,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: true,
+    scores: {
+      charge: 4,
+      toxicite: 5,
+      formation: 5,
+      liberte: 6,
+      ambiance: 5,
+    },
+    highlights: [
+      "Instable selon le responsable",
+      "P3 : Pr Si Youcef strict (TDs, pointage)",
+      "Premier mois stressant",
+      "2e mois : 1–2 j/semaine",
+      "3e mois : congés + 2j/semaine",
+      "Avis multiples (ophtalmo, radio, ORL...)",
+    ],
+    badge: "⚠️ Variable",
+    summary:
+      "Terrain très variable selon la période et le responsable. Peut aller de 4–5 j/semaine à 2 j/semaine. Instabilité potentielle.",
+  },
+  {
+    id: 8,
+    name: "Onco",
+    hospital: "Rouiba",
+    specialty: "oncologie",
+    icon: "🎗️",
+    color: "#06D6A0",
+    period: "P1",
+    effectif: 8,
+    gardes: false,
+    gardeFreq: "Astreinte 8j",
+    roulement: true,
+    scores: {
+      charge: 4,
+      toxicite: 2,
+      formation: 5,
+      liberte: 7,
+      ambiance: 8,
+    },
+    highlights: [
+      "Pas de gardes formelles",
+      "8h30 → 12–14h (max 15h)",
+      "Astreinte 9–16h (8 jours/stage)",
+      "Rapport de stage obligatoire (120 patients)",
+      "Soutenance obligatoire en P1",
+      "La plupart des médecins très gentils",
+    ],
+    badge: "📝 Rapport Lourd",
+    summary:
+      "Terrain léger en termes de présence mais le rapport de stage (étude 120 patients + soutenance) représente une charge intellectuelle importante.",
+  },
+  {
+    id: 9,
+    name: "Med Interne",
+    hospital: "Ain Taya",
+    specialty: "médecine interne",
+    icon: "🏥",
+    color: "#118AB2",
+    period: "P3",
+    effectif: 7,
+    gardes: true,
+    gardeFreq: "Chaque 9–10j",
+    roulement: true,
+    scores: {
+      charge: 4,
+      toxicite: 2,
+      formation: 7,
+      liberte: 7,
+      ambiance: 8,
+    },
+    highlights: [
+      "Roulement 1/4 à 1/3",
+      "Gardes avec UMC — libération à minuit",
+      "Visite dimanche pédagogique",
+      "Planchage lundi",
+      "Cas variés : MICI, AI, auto-inflammation",
+      "Liberté à 12h hors admissions",
+    ],
+    badge: "🎓 Pédagogique",
+    summary:
+      "Bon terrain avec cas variés et équipe disponible. Roulement confortable, gardes légères (minuit libération). Idéal pour apprendre tout en restant flexible.",
+  },
+  {
+    id: 10,
+    name: "Med Légale",
+    hospital: "Beni Messous",
+    specialty: "médecine légale",
+    icon: "⚖️",
+    color: "#4CC9F0",
+    period: "Multi",
+    effectif: 4,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: true,
+    scores: {
+      charge: 2,
+      toxicite: 1,
+      formation: 2,
+      liberte: 9,
+      ambiance: 9,
+    },
+    highlights: [
+      "Consultation, autopsie, unité pénitentiaire",
+      "Présence non vraiment obligatoire",
+      "Autopsies optionnelles",
+      "Colloque mardi 14h–16h30",
+      "Roulement demi-journée/semaine en P2",
+      "Astreinte jusqu'à 16h (sortie souvent plus tôt)",
+    ],
+    badge: "😴 Ultra Léger",
+    summary:
+      "Le terrain le plus light de l'internat. Quasi aucune toxicité, équipe super, mais quasi aucune formation médicale clinique. Pour récupérer ou préparer le concours.",
+  },
+  {
+    id: 11,
+    name: "Hémato",
+    hospital: "CPMC",
+    specialty: "hématologie",
+    icon: "🩸",
+    color: "#EF476F",
+    period: "P4",
+    effectif: 5,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 7,
+      toxicite: 2,
+      formation: 8,
+      liberte: 2,
+      ambiance: 8,
+    },
+    highlights: [
+      "Tous les jours — pas de roulement",
+      "1.5 mois HDJ + PU greffe de moelle",
+      "1.5 mois service unité stérile",
+      "Imagerie interne (écho/scanner/IRM)",
+      "Greffe de moelle unique à CPMC et Blida",
+      "9h → 14h (dialyse = plus long)",
+    ],
+    badge: "🔬 Rare et Unique",
+    summary:
+      "Expérience unique avec la greffe de moelle osseuse. Équipe gentille et terrain très formateur en hémato. Le manque total de roulement est le principal inconvénient.",
+  },
+
+  // ── NEW BATCH ────────────────────────────────────────────
+
+  {
+    id: 12,
+    name: "Med Interne",
+    hospital: "Beni Messous",
+    specialty: "médecine interne",
+    icon: "🏥",
+    color: "#6366f1",
+    period: "Multi",
+    effectif: 6,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 7,
+      toxicite: 6,
+      formation: 3,
+      liberte: 2,
+      ambiance: 4,
+    },
+    highlights: [
+      "Pointage 8h30, présence tous les jours",
+      "Service maladies de système — pas de PU",
+      "Évacuations ++ bête noire des internes",
+      "Ambulancier part sans vous — débrouillard",
+      "Quelques gestes : BGSA, capillaroscopie",
+      "2 TDs à présenter par interne",
+    ],
+    badge: "😤 Évacs Cauchemar",
+    summary:
+      "Terrain décrié pour l'utilisation des internes comme agents d'évacuation sans soutien. Peu formateur cliniquement. Résidents mixtes. À éviter si vous habitez loin.",
+  },
+
+  {
+    id: 13,
+    name: "Endocrino",
+    hospital: "Beni Messous",
+    specialty: "endocrinologie",
+    icon: "🧬",
+    color: "#a78bfa",
+    period: "P1",
+    effectif: 5,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: true,
+    scores: {
+      charge: 3,
+      toxicite: 1,
+      formation: 3,
+      liberte: 7,
+      ambiance: 8,
+    },
+    highlights: [
+      "Roulement 2sem/3 (P1 = 5 internes)",
+      "Avis uniquement — fin max 12h",
+      "Pas de pointage ni d'astreinte",
+      "Rapport de stage signé avant fin P1",
+      "CDS très gentille et protectrice",
+      "Surtout diabétologie, peu d'endocrino rare",
+    ],
+    badge: "☀️ Ultra Léger",
+    summary:
+      "Terrain médical très léger. CDS exemplaire. Résidents pédagogues. Peu de cas rares d'endocrino. La P2/P3/P4 est encore plus espacée avec plus d'internes.",
+  },
+
+  {
+    id: 14,
+    name: "Diabeto",
+    hospital: "BEO",
+    specialty: "diabétologie",
+    icon: "🩺",
+    color: "#f0abfc",
+    period: "P4",
+    effectif: 3,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 5,
+      toxicite: 4,
+      formation: 4,
+      liberte: 5,
+      ambiance: 6,
+    },
+    highlights: [
+      "Pointage & dépointage (P4 seulement)",
+      "Admissions, avis, radio + FO ophtalmo",
+      "Roulement 1s/2 à 1s/3 autres périodes",
+      "Visite 9h–15h (longue)",
+      "Sortie 12h–12h30 si roulement",
+      "Formation résidente-dépendante",
+    ],
+    badge: "⚠️ Pointage Strict",
+    summary:
+      "Terrain correct si roulement bien géré (autres périodes). Le pointage en P4 et la secrétaire sont les points noirs. Formation possible si vous posez des questions.",
+  },
+
+  {
+    id: 15,
+    name: "REA",
+    hospital: "Bainem",
+    specialty: "réanimation",
+    icon: "🫀",
+    color: "#fb7185",
+    period: "P4",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Effectif dépendant",
+    roulement: true,
+    scores: {
+      charge: 3,
+      toxicite: 1,
+      formation: 6,
+      liberte: 9,
+      ambiance: 10,
+    },
+    highlights: [
+      "Que des gardes — aucune tâche service",
+      "Accès REA, bloc, décochage, bronchoscopie",
+      "Suivez juste les résidents",
+      "Chambre de garde disponible",
+      "0 toxicité — tout le monde gentil",
+      "Meilleur terrain pour se reposer",
+    ],
+    badge: "🌴 Vider l'Internat",
+    summary:
+      "Le meilleur terrain pour souffler. Que des gardes, aucune obligation service. Accès passif à des gestes techniques importants. 0 toxicité. Vivement recommandé pour récupérer.",
+  },
+
+  {
+    id: 16,
+    name: "Cardio A1",
+    hospital: "Mustapha Basha",
+    specialty: "cardiologie",
+    icon: "❤️",
+    color: "#f97316",
+    period: "P1",
+    effectif: 8,
+    gardes: true,
+    gardeFreq: "Chaque 16j (→14j)",
+    roulement: true,
+    scores: {
+      charge: 5,
+      toxicite: 2,
+      formation: 8,
+      liberte: 7,
+      ambiance: 9,
+    },
+    highlights: [
+      "Roulement 1 sem/4 (service en travaux)",
+      "Gardes monomes — chaque 16j puis 14j",
+      "Travail fini 11h–12h, astreinte max 14h",
+      "ECG ++ formation très solide",
+      "Accès bloc rythmologie",
+      "Toute l'équipe explique très bien",
+    ],
+    badge: "📈 ECG Expert",
+    summary:
+      "Très bon terrain cardiologique malgré les travaux. Roulement 1/4, gardes espacées, équipe pédagogue et très sympa. Formation ECG et prise en charge CV solide.",
+  },
+
+  {
+    id: 17,
+    name: "Urologie",
+    hospital: "Mustapha Basha",
+    specialty: "urologie",
+    icon: "🔬",
+    color: "#0ea5e9",
+    period: "P2",
+    effectif: 7,
+    gardes: true,
+    gardeFreq: "Chaque 6j (PU 24h)",
+    roulement: false,
+    scores: {
+      charge: 7,
+      toxicite: 2,
+      formation: 7,
+      liberte: 5,
+      ambiance: 7,
+    },
+    highlights: [
+      "Gardes 24h au PU — 30-40 patients/garde",
+      "Sondage urinaire — vous devenez experts",
+      "Colloque mardi avec TDs des assistants",
+      "Pas de service (travaux)",
+      "Examen clinique + prescriptions",
+      "⚠️ Déconseillé aux femmes (إحراج)",
+    ],
+    badge: "🔱 Chirurgie Pratique",
+    summary:
+      "Bon terrain urologique avec gardes actives (30-40 patients). Cas variés : RVA, coliques, infections, torsions. Service en travaux. NB : déconseillé aux étudiantes selon les témoignages.",
+  },
+
+  {
+    id: 18,
+    name: "Pneumo (Pr Khlaf)",
+    hospital: "Beni Messous",
+    specialty: "pneumologie",
+    icon: "🫁",
+    color: "#38bdf8",
+    period: "P3",
+    effectif: 6,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: true,
+    scores: {
+      charge: 3,
+      toxicite: 2,
+      formation: 3,
+      liberte: 8,
+      ambiance: 9,
+    },
+    highlights: [
+      "Service léger — sortie 11h ou avant",
+      "Roulement possible entre internes",
+      "Avis principalement cardio + radio + écho",
+      "Résidents TRÈS gentils (Dr Khelfellah)",
+      "Majors défendaient les internes",
+      "P4 : responsable changée → quasi absents",
+    ],
+    badge: "🌿 Équipe en Or",
+    summary:
+      "Terrain léger avec une équipe de résidents exceptionnelle. Peu formateur cliniquement mais idéal pour se reposer. Roulement possible. Ambiance excellente.",
+  },
+
+  {
+    id: 19,
+    name: "Med Interne",
+    hospital: "Birtraria",
+    specialty: "médecine interne",
+    icon: "🏥",
+    color: "#84cc16",
+    period: "P3",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Monome (fréq. variable)",
+    roulement: false,
+    scores: {
+      charge: 7,
+      toxicite: 4,
+      formation: 5,
+      liberte: 3,
+      ambiance: 6,
+    },
+    highlights: [
+      "Présence 8h30–13h30 + astreinte 16h",
+      "Gardes monomes — équipe résident dépendant",
+      "Évacuations +++ : bête noire du terrain",
+      "RDG obligatoire, TD en anglais à présenter",
+      "Cas variés service + gardes formateurs",
+      "Internes utilisés pour les évacs",
+    ],
+    badge: "🚑 Évacs Redoutées",
+    summary:
+      "Terrain avec de bons cas mais les évacuations à répétition démotivent les internes. Résidents gentils. Bonne formation potentielle si on ne se laisse pas décourager.",
+  },
+
+  {
+    id: 20,
+    name: "Néphro",
+    hospital: "BEO",
+    specialty: "néphrologie",
+    icon: "💧",
+    color: "#22d3ee",
+    period: "Multi",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "WE (prof-imposées)",
+    roulement: false,
+    scores: {
+      charge: 6,
+      toxicite: 3,
+      formation: 6,
+      liberte: 3,
+      ambiance: 7,
+    },
+    highlights: [
+      "Présence chaque jour, pas de roulement",
+      "RDG 8h30 quotidien (parfois skippé)",
+      "Fin vers 14h",
+      "Astreintes + gardes WE ajoutées par prof",
+      "1 observation + 1 TD par interne",
+      "Pas de pointage mais très surveillé",
+    ],
+    badge: "👁️ Très Surveillé",
+    summary:
+      "Terrain correct mais strict. Le prof a ajouté des gardes le weekend. Pas de pointage officiel mais les absences sont très remarquées. Formation convenable.",
+  },
+
+  {
+    id: 21,
+    name: "Rhumato",
+    hospital: "Benaknoun",
+    specialty: "rhumatologie",
+    icon: "🦴",
+    color: "#a3e635",
+    period: "P4",
+    effectif: 4,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: true,
+    scores: {
+      charge: 2,
+      toxicite: 2,
+      formation: 2,
+      liberte: 9,
+      ambiance: 8,
+    },
+    highlights: [
+      "Roulement 1s/2, pas de jeudi",
+      "9h30 → 12h–13h max",
+      "Pas de présence obligatoire",
+      "Détachement et transfert acceptés",
+      "Résidents proches et gentils",
+      "Formation quasi nulle (hammouda matt3alam walou)",
+    ],
+    badge: "😴 Repos Total",
+    summary:
+      "Le terrain idéal pour souffler. Roulement 1s/2, aucune garde, horaires très courts, pas de présence obligatoire. Mais attention : pratiquement rien à apprendre.",
+  },
+
+  {
+    id: 22,
+    name: "ORL",
+    hospital: "Mustapha Basha",
+    specialty: "ORL",
+    icon: "👂",
+    color: "#fb923c",
+    period: "P3",
+    effectif: 7,
+    gardes: true,
+    gardeFreq: "1 interne/service",
+    roulement: true,
+    scores: {
+      charge: 6,
+      toxicite: 3,
+      formation: 7,
+      liberte: 6,
+      ambiance: 6,
+    },
+    highlights: [
+      "2 services + urgences",
+      "Roulement 1 interne/service (officieux)",
+      "Gardes avec R1 (monomes)",
+      "Chirurgie = formation solide",
+      "R1 haylin, R2 corrects, majors peu contactés",
+      "Responsable aware mais ferme les yeux",
+    ],
+    badge: "🏥 Chirurgie Utile",
+    summary:
+      "Bon terrain chirurgical ORL. Gardes monomes actives. Roulement officieux 1/interne/service. Formation chirurgicale intéressante. Équipe mixte selon les niveaux.",
+  },
+
+  {
+    id: 23,
+    name: "Néphro",
+    hospital: "Mustapha Basha",
+    specialty: "néphrologie",
+    icon: "💧",
+    color: "#06b6d4",
+    period: "Multi",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "J0/J1/J2 (greffe) + Sam",
+    roulement: true,
+    scores: {
+      charge: 6,
+      toxicite: 3,
+      formation: 7,
+      liberte: 4,
+      ambiance: 6,
+    },
+    highlights: [
+      "8h30 → 14h tous les jours",
+      "3 unités : service, dialyse, greffe, DP",
+      "Gardes J0/J1/J2 si greffe + astreintes sam",
+      "Avis + accompagnement radio",
+      "Dialyse péritonéale unique",
+      "Gardes : juste assister les résidents",
+    ],
+    badge: "🔬 Greffe & Dialyse",
+    summary:
+      "Terrain néphro complet avec 4 unités. Greffe et dialyse péritonéale offrent une expérience rare. Gardes légères (assister résidents). Charge quotidienne sans roulement.",
+  },
+
+  {
+    id: 24,
+    name: "Rhumato",
+    hospital: "BEO",
+    specialty: "rhumatologie",
+    icon: "🦴",
+    color: "#4ade80",
+    period: "Multi",
+    effectif: 5,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: true,
+    scores: {
+      charge: 3,
+      toxicite: 1,
+      formation: 5,
+      liberte: 8,
+      ambiance: 9,
+    },
+    highlights: [
+      "5/5 officiel → roulement officieux 2/5",
+      "Consultations avec professeurs",
+      "Avis de service principalement",
+      "Aucune toxicité",
+      "Résidents tous très gentils",
+      "Apprentissage diagnostique en consultation",
+    ],
+    badge: "✨ Zéro Toxicité",
+    summary:
+      "Terrain très agréable avec un roulement officieux 2/5. Aucune toxicité, équipe au top. Formation correcte en consultation rhumatologique. Idéal pour un équilibre serein.",
+  },
+
+  {
+    id: 25,
+    name: "Med Interne",
+    hospital: "BEO",
+    specialty: "médecine interne",
+    icon: "🏥",
+    color: "#818cf8",
+    period: "P1",
+    effectif: 6,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 5,
+      toxicite: 2,
+      formation: 6,
+      liberte: 5,
+      ambiance: 8,
+    },
+    highlights: [
+      "9h → 12h tous les jours (CDS strict)",
+      "Services H/F — 1.5 mois chacun",
+      "Colloque lundi + visites lundi & jeudi",
+      "Constantes, avis ORL/ophtalmo, examen clinique",
+      "Pas de travail de coursier",
+      "TD programme + présentation patients",
+    ],
+    badge: "📚 Formation Correcte",
+    summary:
+      "Terrain équilibré, matériel disponible, équipe sympa et pédagogue. Pas de roulement mais horaires courts (9-12h). CDS strict sur la présence mais correct. Bon pour la P1.",
+  },
+
+  {
+    id: 26,
+    name: "Hépatologie",
+    hospital: "Mustapha Basha",
+    specialty: "hépatologie",
+    icon: "🫀",
+    color: "#fbbf24",
+    period: "P4",
+    effectif: 5,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 7,
+      toxicite: 3,
+      formation: 6,
+      liberte: 3,
+      ambiance: 7,
+    },
+    highlights: [
+      "5/5 — 3 unités : HDJ, service, USC",
+      "8h30 → 14h–15h (service/USC plus tard)",
+      "Pas de gardes, pas de roulement",
+      "1 mois par unité",
+      "CDS très gentille, accorde jours libres",
+      "Fatigant l'été",
+    ],
+    badge: "☀️ Fatiguant l'Été",
+    summary:
+      "Terrain sans gardes mais 5/5 sans roulement. CDS bienveillante. 3 unités variées. Quelques résidents toxiques selon les cas. Charge élevée l'été. Pas de détachement possible.",
+  },
+
+  {
+    id: 27,
+    name: "Gastro",
+    hospital: "Mustapha Basha",
+    specialty: "gastroentérologie",
+    icon: "🫁",
+    color: "#d97706",
+    period: "P3",
+    effectif: 6,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 5,
+      toxicite: 2,
+      formation: 4,
+      liberte: 5,
+      ambiance: 7,
+    },
+    highlights: [
+      "5/5 à 8h30 + RDG",
+      "Avis anti-TNF (stomato, dermato, anesthésie)",
+      "RCP dimanche, colloque jeudi",
+      "Focus médicaments nouveaux mercredi",
+      "TDs faits par les assistants",
+      "Peu formateur — proactivité requise",
+    ],
+    badge: "📋 Proactivité Requise",
+    summary:
+      "Terrain peu formateur si vous attendez qu'on vienne vous enseigner. Mais si vous posez des questions, les résidents (non toxiques) peuvent vous apprendre. RDG quotidien obligatoire.",
+  },
+
+  {
+    id: 28,
+    name: "ORL",
+    hospital: "BEO",
+    specialty: "ORL",
+    icon: "👂",
+    color: "#f59e0b",
+    period: "P1",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Chaque 6j (P1)",
+    roulement: true,
+    scores: {
+      charge: 8,
+      toxicite: 2,
+      formation: 8,
+      liberte: 4,
+      ambiance: 7,
+    },
+    highlights: [
+      "P1 : garde/6 — P2 : /9 — P3 : /12 — P4 : /15",
+      "Post-garde uniquement (léger)",
+      "Rapport de stage : binôme, stats archives",
+      "Gardes progressivement espacées",
+      "CDS très accessible et protecteur",
+      "Résidents majoritairement gentils",
+    ],
+    badge: "📉 Gardes Progressives",
+    summary:
+      "La charge en P1 est élevée (garde/6j) mais elle diminue fortement chaque période. Terrain formateur avec des gardes actives. Rapport de stage avec stats d'archives. CDS de côté des internes.",
+  },
+
+  {
+    id: 29,
+    name: "REA Polyvalente",
+    hospital: "BEO",
+    specialty: "réanimation",
+    icon: "🫀",
+    color: "#e11d48",
+    period: "P2",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Chaque 5j",
+    roulement: false,
+    scores: {
+      charge: 9,
+      toxicite: 4,
+      formation: 9,
+      liberte: 2,
+      ambiance: 6,
+    },
+    highlights: [
+      "5/5 + garde chaque 5j + RDG obligatoire",
+      "RDG 9h — discussions très riches",
+      "Planchage mardi jusqu'à 16h–17h",
+      "Pas de chambre internes (dortoir précaire)",
+      "Pas de gestes directs pour internes",
+      "CDS très stricte — équipe féminine à 100%",
+    ],
+    badge: "🧠 Max Formation BEO",
+    summary:
+      "Le terrain le plus formateur de BEO selon les témoignages. Raisonnement clinique développé via les RDGs. Mais très chargé, gardes tous les 5j sans chambre d'internes. CDS stricte.",
+  },
+
+  {
+    id: 30,
+    name: "Med Légale",
+    hospital: "Mustapha Basha",
+    specialty: "médecine légale",
+    icon: "⚖️",
+    color: "#94a3b8",
+    period: "Multi",
+    effectif: 4,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: true,
+    scores: {
+      charge: 2,
+      toxicite: 1,
+      formation: 3,
+      liberte: 8,
+      ambiance: 9,
+    },
+    highlights: [
+      "1.5 mois pinel + 1.5 mois consultation",
+      "Roulement selon effectif (1 interne/sem consulte)",
+      "Avis principalement — équipe hayline",
+      "Pinel : variété de cas psychiatrico-légaux",
+      "CDS accessible et de côté des internes",
+      "Très léger — idéal pour préparer le concours",
+    ],
+    badge: "📚 Préparez le Concours",
+    summary:
+      "Terrain très light, 0 toxicité. Le pinel offre une variété de cas intéressants. La consultation reste légère. Équipe hayline. Idéal pour réviser tout en assurant un minimum clinique.",
+  },
+
+  // ── NEW BATCH 3 ──────────────────────────────────────────
+
+  {
+    id: 31,
+    name: "Cardiologie",
+    hospital: "Beni Messous",
+    specialty: "cardiologie",
+    icon: "❤️",
+    color: "#f97316",
+    period: "P3",
+    effectif: 4,
+    gardes: false,
+    gardeFreq: "Aucune (travaux)",
+    roulement: true,
+    scores: {
+      charge: 4,
+      toxicite: 2,
+      formation: 6,
+      liberte: 7,
+      ambiance: 8,
+    },
+    highlights: [
+      "4 unités : consult, PU, hospi, USIC",
+      "Sortie max à midi",
+      "ECG matin + accompagnement patients",
+      "Formation ++ si l'interne s'implique",
+      "Pas de gardes (chambre en travaux)",
+      "P4 un peu plus chargé",
+    ],
+    badge: "☀️ Matinée Légère",
+    summary:
+      "Terrain agréable et peu chargé, avec une sortie vers midi. La formation est bonne si vous êtes proactif. Les gardes étaient suspendues pour cause de travaux.",
+  },
+
+  {
+    id: 32,
+    name: "Endocrino",
+    hospital: "CPMC",
+    specialty: "endocrinologie",
+    icon: "🧬",
+    color: "#a78bfa",
+    period: "P3",
+    effectif: 5,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 5,
+      toxicite: 6,
+      formation: 8,
+      liberte: 4,
+      ambiance: 6,
+    },
+    highlights: [
+      "Pointage strict 9h tous les jours",
+      "Irathérapie (dim/mar) - papiers et ordo",
+      "Visites longues (Pr Kesri jusqu'à 13h+)",
+      "Très intéressant (pathologies thyroïdiennes variées)",
+      "Secrétaire stricte sur la présence",
+      "Rapport de stage long et exigeant",
+    ],
+    badge: "📚 Visites Longues",
+    summary:
+      "Excellent terrain pour la théorie et les pathologies rares, mais présence obligatoire avec une secrétaire stricte. Les visites de professeurs sont très instructives mais longues.",
+  },
+
+  {
+    id: 33,
+    name: "REA Polyvalente",
+    hospital: "Mustapha Basha",
+    specialty: "réanimation",
+    icon: "🫀",
+    color: "#e11d48",
+    period: "P2",
+    effectif: 6,
+    gardes: true,
+    gardeFreq: "Semaine + Astreinte WE",
+    roulement: false,
+    scores: {
+      charge: 7,
+      toxicite: 3,
+      formation: 8,
+      liberte: 4,
+      ambiance: 7,
+    },
+    highlights: [
+      "Gardes en monôme, pas de roulement",
+      "Vous faites des gestes (gazo, intubation, sondage)",
+      "Astreintes le weekend jusqu'à 17h",
+      "TD, TP et planchage des résidents mardi",
+      "On se déplace avec l'équipe (urgences)",
+    ],
+    badge: "💉 Gestes Techniques",
+    summary:
+      "Terrain de réanimation très formateur où on vous laisse pratiquer des gestes. Chargé en gardes et astreintes le week-end, mais l'apprentissage au contact des résidents est riche.",
+  },
+
+  {
+    id: 34,
+    name: "ORL",
+    hospital: "Kouba",
+    specialty: "ORL",
+    icon: "👂",
+    color: "#f59e0b",
+    period: "P1",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Garde / 6 jours",
+    roulement: false,
+    scores: {
+      charge: 4,
+      toxicite: 2,
+      formation: 8,
+      liberte: 7,
+      ambiance: 9,
+    },
+    highlights: [
+      "Service 5/5 mais souvent libéré à 10h",
+      "Équipe très chill et gentille",
+      "Participation au bloc opératoire !",
+      "Pas d'évacuations, peu d'avis",
+      "Endoscopie le mercredi (jusqu'à 15h)",
+    ],
+    badge: "🔪 Accès au Bloc",
+    summary:
+      "Super terrain ORL, très intéressant avec accès au bloc opératoire. L'équipe est gentille et le service est globalement léger avec des sorties parfois très tôt.",
+  },
+
+  {
+    id: 35,
+    name: "Med Interne",
+    hospital: "Kouba",
+    specialty: "médecine interne",
+    icon: "🏥",
+    color: "#6366f1",
+    period: "Multi",
+    effectif: 6,
+    gardes: true,
+    gardeFreq: "Garde / 9 jours (monôme)",
+    roulement: false,
+    scores: {
+      charge: 8,
+      toxicite: 3,
+      formation: 8,
+      liberte: 2,
+      ambiance: 8,
+    },
+    highlights: [
+      "Pointage et dépointage obligatoires (8h30-15h)",
+      "Beaucoup d'évacuations (bête noire)",
+      "Très riche et formateur si on s'implique",
+      "Résidents et Professeur très compétents",
+      "Colloque obligatoire et long (jeudi)",
+      "Chambre de garde de luxe",
+    ],
+    badge: "🚑 Évacuations ++",
+    summary:
+      "Un service organisé et très formateur avec une excellente équipe médicale. Bémols : charge horaire stricte (8h30-15h) et beaucoup d'évacuations fatigantes.",
+  },
+
+  {
+    id: 36,
+    name: "Réa / UMC",
+    hospital: "Zmirli",
+    specialty: "réanimation",
+    icon: "🫀",
+    color: "#be123c",
+    period: "P3",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Effectif dépendant",
+    roulement: true,
+    scores: {
+      charge: 9,
+      toxicite: 4,
+      formation: 9,
+      liberte: 2,
+      ambiance: 6,
+    },
+    highlights: [
+      "1.5 mois service / 1.5 mois déchoc chir",
+      "Tous les gestes : intubation, gazo, VVP, PDP",
+      "Extrêmement chargé surtout en P3",
+      "2 TDs à présenter",
+      "Système un peu plus souple en P4",
+    ],
+    badge: "🚨 Extrême Urgence",
+    summary:
+      "Pour ceux qui veulent apprendre l'extrême urgence et la réanimation pure. Extrêmement chargé et fatigant, mais formation technique incomparable.",
+  },
+
+  {
+    id: 37,
+    name: "Néphro",
+    hospital: "Beni Messous",
+    specialty: "néphrologie",
+    icon: "💧",
+    color: "#0ea5e9",
+    period: "P1",
+    effectif: 6,
+    gardes: true,
+    gardeFreq: "Variable (selon R1)",
+    roulement: false,
+    scores: {
+      charge: 7,
+      toxicite: 3,
+      formation: 8,
+      liberte: 4,
+      ambiance: 8,
+    },
+    highlights: [
+      "2 unités (Hospitalisation et Greffe)",
+      "Hospi : très chargée en avis",
+      "Greffe : très léger, sortie rapide",
+      "RDG très intéressant",
+      "Des résidents exceptionnels",
+    ],
+    badge: "📖 RDG Instructif",
+    summary:
+      "Terrain néphro solide. L'unité d'hospitalisation demande beaucoup de travail (avis), mais compensé par une super équipe et des moments d'enseignement de qualité.",
+  },
+
+  {
+    id: 38,
+    name: "Urologie",
+    hospital: "BEO",
+    specialty: "urologie",
+    icon: "🔬",
+    color: "#0284c7",
+    period: "P4",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Garde de 24h / 6",
+    roulement: false,
+    scores: {
+      charge: 8,
+      toxicite: 2,
+      formation: 8,
+      liberte: 6,
+      ambiance: 8,
+    },
+    highlights: [
+      "Pas de service, QUE des gardes (24h)",
+      "Très chargé (40 à 80 patients / nuit)",
+      "Coliques, RVA, pyélonéphrites",
+      "Tu examines et tu traites les cas simples",
+      "Équipe très sympa (non toxique)",
+    ],
+    badge: "🌙 Nuits Blanches",
+    summary:
+      "Rythme particulier : uniquement des gardes très actives. Excellent pour gérer les urgences urologiques simples de façon autonome. Équipe bienveillante.",
+  },
+
+  {
+    id: 39,
+    name: "Néphro",
+    hospital: "Parnet",
+    specialty: "néphrologie",
+    icon: "💧",
+    color: "#38bdf8",
+    period: "P2",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Garde / 6",
+    roulement: true,
+    scores: {
+      charge: 3,
+      toxicite: 2,
+      formation: 4,
+      liberte: 8,
+      ambiance: 8,
+    },
+    highlights: [
+      "Roulement 1 sem / 2",
+      "Sortie à midi",
+      "Très peu de tâches (scanners, qlq avis)",
+      "Gardes légères où on dort bien",
+      "Terrain idéal pour préparer un concours",
+    ],
+    badge: "💤 Sommeil Garanti",
+    summary:
+      "Un terrain extrêmement calme. Avec un roulement 1 semaine sur 2 et des gardes tranquilles, c'est l'endroit parfait si vous avez besoin de temps libre pour étudier.",
+  },
+
+  {
+    id: 40,
+    name: "Pneumo",
+    hospital: "BEO",
+    specialty: "pneumologie",
+    icon: "🫁",
+    color: "#bae6fd",
+    period: "P1",
+    effectif: 6,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 4,
+      toxicite: 2,
+      formation: 5,
+      liberte: 6,
+      ambiance: 8,
+    },
+    highlights: [
+      "Présence tous les jours 9h - 14h",
+      "Pas de gardes ni d'astreintes",
+      "Pas d'évacuations",
+      "Résidentes et cheffe de service sympas",
+      "Tâches classiques (constantes, cliniques, avis interne)",
+    ],
+    badge: "🌬️ Respirable",
+    summary:
+      "Un terrain de pneumo serein sans gardes, sans évacuations et avec une bonne équipe. Idéal pour une P1 sans trop de pression.",
+  },
+
+  {
+    id: 41,
+    name: "Pneumo (Pr Khlaf)",
+    hospital: "Beni Messous",
+    specialty: "pneumologie",
+    icon: "🫁",
+    color: "#7dd3fc",
+    period: "P3",
+    effectif: 5,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 4,
+      toxicite: 3,
+      formation: 5,
+      liberte: 7,
+      ambiance: 7,
+    },
+    highlights: [
+      "5/5 jours, sortie vers 13h/14h max",
+      "Tâches : Avis, constantes, biopsies, gazo",
+      "Personnel globalement bienveillant",
+      "La direction voulait imposer des gardes (à vérifier)",
+      "Validation de stage facile si on est discipliné",
+    ],
+    badge: "📋 Routine Légère",
+    summary:
+      "Terrain stable sans mauvaise surprise (pour le moment pas de gardes). L'équipe est correcte et on sort assez tôt l'après-midi.",
+  },
+
+  {
+    id: 42,
+    name: "Med Interne",
+    hospital: "Rouiba",
+    specialty: "médecine interne",
+    icon: "🏥",
+    color: "#818cf8",
+    period: "P2",
+    effectif: 5,
+    gardes: false,
+    gardeFreq: "Astreintes (17h)",
+    roulement: false,
+    scores: {
+      charge: 5,
+      toxicite: 5,
+      formation: 5,
+      liberte: 3,
+      ambiance: 5,
+    },
+    highlights: [
+      "Pointage strict 9h-14h (Roulement impossible)",
+      "Très riche (Maladies système, onco, hémato)",
+      "Internes peu impliqués (tâches administratives)",
+      "Attention : Chef de service très stricte",
+      "Astreintes PU inutiles et non formatives",
+    ],
+    badge: "⚠️ CDS Stricte",
+    summary:
+      "Un terrain riche en cas médicaux rares, mais on vous laisse souvent un rôle de spectateur/secrétaire. Il ne faut surtout pas énerver le chef de service.",
+  },
+
+  {
+    id: 43,
+    name: "Med Interne",
+    hospital: "Zmirli",
+    specialty: "médecine interne",
+    icon: "🏥",
+    color: "#4f46e5",
+    period: "Multi",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Monomes (16h Sem, 10h WE)",
+    roulement: true,
+    scores: {
+      charge: 9,
+      toxicite: 2,
+      formation: 10,
+      liberte: 3,
+      ambiance: 8,
+    },
+    highlights: [
+      "1 mois PU, 1 mois Homme, 1 mois Femme",
+      "PU = Vous faites absolument TOUT",
+      "Gestion des urgences (OAP, ACR, AVC)",
+      "Zéro travail de coursier",
+      "Hyper épuisant mais masterclass en urgences",
+    ],
+    badge: "🔥 Masterclass Urgences",
+    summary:
+      "Le terrain qui fera de vous un vrai médecin urgentiste. Extrêmement formateur au PU mais d'une lourdeur écrasante. À déconseiller en P4 si on prépare le résidanat.",
+  },
+
+  {
+    id: 44,
+    name: "Pneumo",
+    hospital: "Rouiba",
+    specialty: "pneumologie",
+    icon: "🫁",
+    color: "#0ea5e9",
+    period: "P4",
+    effectif: 6,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 8,
+      toxicite: 2,
+      formation: 8,
+      liberte: 3,
+      ambiance: 8,
+    },
+    highlights: [
+      "Présence 5j/5 de 9h à 15h",
+      "4 unités : Homme, Femme, Explorations, HDJ",
+      "Beaucoup de gestes (gazo, ponctions)",
+      "Très chargé en travail mais formateur",
+      "Éviter en plein été (fatigant 5j/5 sans clim)",
+    ],
+    badge: "🥵 Formateur mais Lourd",
+    summary:
+      "Excellent terrain de pneumologie pour apprendre (gestes, explorations). Cependant, la présence de 9h à 15h tous les jours sans roulement le rend épuisant.",
+  },
+
+  {
+    id: 45,
+    name: "Infectiologie A",
+    hospital: "El Kettar",
+    specialty: "infectiologie",
+    icon: "🦠",
+    color: "#10b981",
+    period: "P1",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Garde / 11",
+    roulement: false,
+    scores: {
+      charge: 5,
+      toxicite: 3,
+      formation: 5,
+      liberte: 5,
+      ambiance: 7,
+    },
+    highlights: [
+      "9h à 12h/13h tous les jours",
+      "Gardes au PU (avec internes Nicole/Lemaire)",
+      "Orienté pédiatrie (Pasteur/Widal)",
+      "Évacuations fréquentes (Bab el Oued, Ait Idir)",
+      "Rapport de stage validé sans problème",
+    ],
+    badge: "👶 Pédiatrie & Évacs",
+    summary:
+      "Un terrain d'infectio très orienté pédiatrie avec des horaires abordables (jusqu'à midi/13h). Beaucoup d'évacuations vers d'autres CHU.",
+  },
+
+  {
+    id: 46,
+    name: "Dermatologie",
+    hospital: "Mustapha Basha",
+    specialty: "dermatologie",
+    icon: "🧴",
+    color: "#f43f5e",
+    period: "Multi",
+    effectif: 5,
+    gardes: false,
+    gardeFreq: "Astreintes (11h-16h)",
+    roulement: false,
+    scores: {
+      charge: 7,
+      toxicite: 7,
+      formation: 2,
+      liberte: 3,
+      ambiance: 4,
+    },
+    highlights: [
+      "Pointage stricte (secrétaire sur le dos)",
+      "Que des maladies systémiques/auto-immunes",
+      "Les internes font surtout les coursiers (Avis ++)",
+      "Pas de dermatologie classique (acné, etc)",
+      "Pas de roulement accepté l'été",
+    ],
+    badge: "📉 Fausse Dermato",
+    summary:
+      "Une déception pour ceux qui cherchent la dermato de base. C'est de la pseudo médecine interne complexe. L'interne est réduit au rôle de coursier d'avis. Secrétaire toxique.",
+  },
+
+  {
+    id: 47,
+    name: "Pneumo",
+    hospital: "Mustapha Basha",
+    specialty: "pneumologie",
+    icon: "🫁",
+    color: "#38bdf8",
+    period: "P1",
+    effectif: 6,
+    gardes: false,
+    gardeFreq: "Facultatives",
+    roulement: true,
+    scores: {
+      charge: 4,
+      toxicite: 1,
+      formation: 9,
+      liberte: 6,
+      ambiance: 10,
+    },
+    highlights: [
+      "L'un des meilleurs terrains médicaux",
+      "Fin à 13h-14h",
+      "Pratique +++ à l'HDJ (ponctions, gazo)",
+      "Résidents et Cheffe de service super gentils",
+      "Mini-soutenance de stage en fin de période",
+      "Seul défaut : l'hôpital est en montée",
+    ],
+    badge: "🌟 9/10",
+    summary:
+      "Terrain exceptionnel offrant un équilibre parfait entre apprentissage (gestes), confort et ambiance. Un must-have en choix médical.",
+  },
+
+  {
+    id: 48,
+    name: "Med Interne",
+    hospital: "Mustapha Basha",
+    specialty: "médecine interne",
+    icon: "🏥",
+    color: "#818cf8",
+    period: "P4",
+    effectif: 6,
+    gardes: false,
+    gardeFreq: "Astreintes",
+    roulement: true,
+    scores: {
+      charge: 4,
+      toxicite: 2,
+      formation: 7,
+      liberte: 7,
+      ambiance: 9,
+    },
+    highlights: [
+      "Présence 8h30 - Midi",
+      "TD lundi/mercredi, RDG formateur sans pression",
+      "Roulement possible entre internes",
+      "Résidents et assistants très pédagogues",
+      "Beaucoup d'avis gynéco du côté femme",
+    ],
+    badge: "🕊️ Formateur & Calme",
+    summary:
+      "Un terrain de médecine interne à Mustapha Basha très apprécié. Bon équilibre de vie, horaires réduits, pas de pression inutile, et équipe à l'écoute.",
+  },
+
+  {
+    id: 49,
+    name: "Oncologie",
+    hospital: "Beni Messous",
+    specialty: "oncologie",
+    icon: "🎗️",
+    color: "#ec4899",
+    period: "P4",
+    effectif: 5,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 6,
+      toxicite: 3,
+      formation: 8,
+      liberte: 5,
+      ambiance: 7,
+    },
+    highlights: [
+      "4 jours à Beaufraisier / 1 jour à BM",
+      "Idéal pour briser le tabou du cancer",
+      "Gestions des complications et soins palliatifs",
+      "Problèmes de transport pour Beaufraisier",
+      "Rapport de stage pour chaque période (lourd)",
+    ],
+    badge: "🚌 Transport Galère",
+    summary:
+      "Terrain enrichissant sur le plan humain et médical (gestion de la douleur, complications). Le problème majeur est logistique (transport vers Beaufraisier) et la paperasse du stage.",
+  },
+
+  {
+    id: 50,
+    name: "Infectiologie C",
+    hospital: "El Kettar",
+    specialty: "infectiologie",
+    icon: "🦠",
+    color: "#059669",
+    period: "Multi",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Garde / 9",
+    roulement: false,
+    scores: {
+      charge: 6,
+      toxicite: 3,
+      formation: 5,
+      liberte: 3,
+      ambiance: 8,
+    },
+    highlights: [
+      "Présence bloquée 8h30 - 15h00",
+      "Mots de jour, constantes, évacuations",
+      "Nouveaux cas VIH",
+      "Résidentes adorables",
+      "Le gros problème : on ne peut pas sortir avant 15h",
+    ],
+    badge: "⏳ Bloqué jusqu'à 15h",
+    summary:
+      "Équipe agréable et non toxique. Cependant, le service impose de rester jusqu'à 15h tous les jours même s'il n'y a absolument rien à faire.",
+  },
+];
+
+// ============================================================
+//  UTILITY FUNCTIONS
+// ============================================================
+
+function getChargeColor(score) {
+  if (score <= 2) return "#22c55e";
+  if (score <= 4) return "#84cc16";
+  if (score <= 6) return "#eab308";
+  if (score <= 8) return "#f97316";
+  return "#ef4444";
+}
+
+function getToxiciteColor(score) {
+  if (score <= 1) return "#22c55e";
+  if (score <= 3) return "#84cc16";
+  if (score <= 5) return "#eab308";
+  if (score <= 7) return "#f97316";
+  return "#ef4444";
+}
+
+function getScoreColor(score) {
+  if (score >= 8) return "#22c55e";
+  if (score >= 6) return "#84cc16";
+  if (score >= 4) return "#eab308";
+  if (score >= 2) return "#f97316";
+  return "#ef4444";
+}
+
+function getOverallScore(terrain) {
+  const s = terrain.scores;
+  return (
+    (s.formation * 2 + s.ambiance + s.liberte + (10 - s.charge) + (10 - s.toxicite)) / 7
+  ).toFixed(1);
+}
+
+// ============================================================
+//  DOM BUILDING — CARDS
+// ============================================================
+
+function buildCards(data) {
+  const grid = document.getElementById("terrain-grid");
+  grid.innerHTML = "";
+  data.forEach((t) => {
+    const overall = getOverallScore(t);
+    const card = document.createElement("div");
+    card.className = "terrain-card";
+    card.style.setProperty("--accent", t.color);
+
+    card.innerHTML = `
+      <div class="card-glow"></div>
+      <div class="card-header">
+        <div class="card-icon">${t.icon}</div>
+        <div class="card-title-block">
+          <h3 class="card-name">${t.name}</h3>
+          <span class="card-hospital">${t.hospital}</span>
+        </div>
+        <div class="card-overall">
+          <svg class="overall-ring-svg" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="26" fill="none" stroke="#1e293b" stroke-width="5"/>
+            <circle cx="30" cy="30" r="26" fill="none" stroke="${t.color}" stroke-width="5"
+              stroke-dasharray="${(overall / 10) * 163.4} 163.4"
+              stroke-linecap="round" transform="rotate(-90 30 30)"/>
+          </svg>
+          <span class="overall-num">${overall}</span>
+        </div>
+      </div>
+
+      <div class="card-badge" style="background:${t.color}22;border-color:${t.color}55;color:${t.color}">
+        ${t.badge}
+      </div>
+
+      <div class="card-meta">
+        <span class="meta-pill">📅 ${t.period}</span>
+        <span class="meta-pill">👥 ${t.effectif}</span>
+        <span class="meta-pill ${t.gardes ? "garde-yes" : "garde-no"}">
+          ${t.gardes ? "🌙 " + t.gardeFreq : "✅ Sans gardes"}
+        </span>
+        <span class="meta-pill ${t.roulement ? "roul-yes" : "roul-no"}">
+          ${t.roulement ? "🔄 Roulement" : "❌ No roulement"}
+        </span>
+      </div>
+
+      <div class="score-bars">
+        ${scoreBar("⚡ Charge", t.scores.charge, getChargeColor(t.scores.charge))}
+        ${scoreBar("☠️ Toxicité", t.scores.toxicite, getToxiciteColor(t.scores.toxicite))}
+        ${scoreBar("🎓 Formation", t.scores.formation, getScoreColor(t.scores.formation))}
+        ${scoreBar("🕊️ Liberté", t.scores.liberte, getScoreColor(t.scores.liberte))}
+        ${scoreBar("🤝 Ambiance", t.scores.ambiance, getScoreColor(t.scores.ambiance))}
+      </div>
+
+      <div class="card-highlights">
+        ${t.highlights.slice(0, 4).map((h) => `<div class="highlight-item">→ ${h}</div>`).join("")}
+      </div>
+
+      <button class="detail-btn" onclick="openModal(${t.id})">
+        Voir détails complets ↗
+      </button>
+    `;
+
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty("--mx", x + "%");
+      card.style.setProperty("--my", y + "%");
+    });
+
+    grid.appendChild(card);
+  });
+}
+
+function scoreBar(label, value, color) {
+  return `
+    <div class="score-row">
+      <div class="score-label">${label}</div>
+      <div class="score-track">
+        <div class="score-fill" style="width:${value * 10}%;background:${color};"></div>
+      </div>
+      <div class="score-num" style="color:${color}">${value}/10</div>
+    </div>
+  `;
+}
+
+// ============================================================
+//  MODAL
+// ============================================================
+
+let radarInstance = null;
+
+function openModal(id) {
+  const t = TERRAINS.find((x) => x.id === id);
+  if (!t) return;
+  const overall = getOverallScore(t);
+  const content = document.getElementById("modal-content");
+
+  content.innerHTML = `
+    <div class="modal-header" style="border-bottom-color:${t.color}">
+      <div class="modal-icon-lg">${t.icon}</div>
+      <div class="modal-title-block">
+        <h2 class="modal-name">${t.name} — ${t.hospital}</h2>
+        <span class="modal-spec">${t.specialty.toUpperCase()} · Période ${t.period}</span>
+      </div>
+      <div class="modal-score-badge" style="background:${t.color}22;border-color:${t.color};color:${t.color}">
+        ${overall}<small>/10</small>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-radar-col">
+        <canvas id="modal-radar" width="300" height="300"></canvas>
+      </div>
+      <div class="modal-info-col">
+        <p class="modal-summary-text">"${t.summary}"</p>
+        <div class="modal-quick-grid">
+          <div class="mqg-item"><span class="mqg-l">Effectif</span><span class="mqg-v">👥 ${t.effectif} internes</span></div>
+          <div class="mqg-item"><span class="mqg-l">Gardes</span><span class="mqg-v">${t.gardes ? "🌙 " + t.gardeFreq : "✅ Aucune"}</span></div>
+          <div class="mqg-item"><span class="mqg-l">Roulement</span><span class="mqg-v">${t.roulement ? "🔄 Possible" : "❌ Absent"}</span></div>
+          <div class="mqg-item"><span class="mqg-l">Score global</span><span class="mqg-v" style="color:${t.color};font-weight:700">${overall}/10</span></div>
+        </div>
+        <h4 class="modal-section-title">Points clés du terrain</h4>
+        <ul class="modal-highlights-list">
+          ${t.highlights.map((h) => `<li>${h}</li>`).join("")}
+        </ul>
+        <h4 class="modal-section-title">Scores détaillés</h4>
+        <div class="modal-detail-bars">
+          ${detailBar("⚡ Charge de travail", t.scores.charge, getChargeColor(t.scores.charge), "↓ Mieux si bas")}
+          ${detailBar("☠️ Toxicité", t.scores.toxicite, getToxiciteColor(t.scores.toxicite), "↓ Mieux si bas")}
+          ${detailBar("🎓 Formation", t.scores.formation, getScoreColor(t.scores.formation), "↑ Mieux si haut")}
+          ${detailBar("🕊️ Liberté", t.scores.liberte, getScoreColor(t.scores.liberte), "↑ Mieux si haut")}
+          ${detailBar("🤝 Ambiance", t.scores.ambiance, getScoreColor(t.scores.ambiance), "↑ Mieux si haut")}
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("modal").classList.add("active");
+  setTimeout(() => {
+    const ctx = document.getElementById("modal-radar");
+    if (!ctx) return;
+    if (radarInstance) radarInstance.destroy();
+    radarInstance = new Chart(ctx, {
+      type: "radar",
+      data: {
+        labels: ["Charge ↓", "Toxicité ↓", "Formation", "Liberté", "Ambiance"],
+        datasets: [{
+          label: t.name,
+          data: [t.scores.charge, t.scores.toxicite, t.scores.formation, t.scores.liberte, t.scores.ambiance],
+          backgroundColor: t.color + "33",
+          borderColor: t.color,
+          pointBackgroundColor: t.color,
+          pointBorderColor: "#fff",
+          pointRadius: 5,
+          borderWidth: 2,
+        }],
+      },
+      options: {
+        responsive: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          r: {
+            min: 0, max: 10,
+            ticks: { stepSize: 2, color: "#94a3b8", backdropColor: "transparent", font: { size: 10 } },
+            grid: { color: "#334155" },
+            angleLines: { color: "#334155" },
+            pointLabels: { color: "#cbd5e1", font: { size: 12, weight: "600" } },
+          },
+        },
+      },
+    });
+  }, 60);
+}
+
+function detailBar(label, val, color, hint) {
+  return `
+    <div class="detail-bar-row">
+      <div class="dbr-top"><span>${label}</span><span style="color:${color};font-weight:700">${val}/10</span></div>
+      <div class="dbr-track"><div class="dbr-fill" style="width:${val*10}%;background:${color}"></div></div>
+      <span class="dbr-hint">${hint}</span>
+    </div>
+  `;
+}
+
+function closeModal() {
+  document.getElementById("modal").classList.remove("active");
+}
+
+// ============================================================
+//  COMPARISON CHART
+// ============================================================
+
+let compChart = null;
+
+function buildComparisonChart(data) {
+  const ctx = document.getElementById("comparison-chart");
+  if (!ctx) return;
+  if (compChart) compChart.destroy();
+
+  const param = document.getElementById("compare-param").value;
+  const paramLabels = {
+    charge: "Charge", toxicite: "Toxicité", formation: "Formation",
+    liberte: "Liberté", ambiance: "Ambiance", overall: "Score Global",
+  };
+
+  const labels = data.map((t) => t.icon + " " + t.name + "\n" + t.hospital);
+  const values = data.map((t) =>
+    param === "overall" ? parseFloat(getOverallScore(t)) : t.scores[param]
+  );
+  const colors = data.map((t) => t.color + "cc");
+  const borders = data.map((t) => t.color);
+
+  compChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{
+        label: paramLabels[param],
+        data: values,
+        backgroundColor: colors,
+        borderColor: borders,
+        borderWidth: 2,
+        borderRadius: 8,
+        borderSkipped: false,
+      }],
+    },
+    options: {
+      indexAxis: "y",
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (c) => " " + c.raw + "/10" } },
+      },
+      scales: {
+        x: { min: 0, max: 10, grid: { color: "#1e293b" }, ticks: { color: "#94a3b8", stepSize: 1 } },
+        y: { grid: { display: false }, ticks: { color: "#cbd5e1", font: { size: 11 } } },
+      },
+    },
+  });
+}
+
+// ============================================================
+//  OVERVIEW SPIDER CHART
+// ============================================================
+
+let overviewChart = null;
+
+function buildOverviewChart() {
+  const ctx = document.getElementById("overview-chart");
+  if (!ctx) return;
+  if (overviewChart) overviewChart.destroy();
+
+  const datasets = TERRAINS.map((t) => ({
+    label: t.icon + " " + t.name,
+    data: [t.scores.charge, t.scores.toxicite, t.scores.formation, t.scores.liberte, t.scores.ambiance],
+    backgroundColor: t.color + "18",
+    borderColor: t.color,
+    pointBackgroundColor: t.color,
+    borderWidth: 1.5,
+    pointRadius: 3,
+  }));
+
+  overviewChart = new Chart(ctx, {
+    type: "radar",
+    data: {
+      labels: ["Charge ↓", "Toxicité ↓", "Formation", "Liberté", "Ambiance"],
+      datasets,
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true, position: "right",
+          labels: { color: "#cbd5e1", font: { size: 11 }, padding: 12, usePointStyle: true },
+        },
+      },
+      scales: {
+        r: {
+          min: 0, max: 10,
+          ticks: { stepSize: 2, color: "#94a3b8", backdropColor: "transparent", font: { size: 9 } },
+          grid: { color: "#1e293b" },
+          angleLines: { color: "#1e293b" },
+          pointLabels: { color: "#cbd5e1", font: { size: 13, weight: "600" } },
+        },
+      },
+    },
+  });
+}
+
+// ============================================================
+//  STATS BANNER
+// ============================================================
+
+function buildStats() {
+  const bestFormation = TERRAINS.reduce((a, b) => a.scores.formation > b.scores.formation ? a : b);
+  const leastCharge   = TERRAINS.reduce((a, b) => a.scores.charge < b.scores.charge ? a : b);
+  const leastToxic    = TERRAINS.reduce((a, b) => a.scores.toxicite < b.scores.toxicite ? a : b);
+  const mostFree      = TERRAINS.reduce((a, b) => a.scores.liberte > b.scores.liberte ? a : b);
+  const bestOverall   = TERRAINS.reduce((a, b) =>
+    parseFloat(getOverallScore(a)) > parseFloat(getOverallScore(b)) ? a : b);
+
+  const stats = [
+    { icon: "🏆", label: "Meilleur Score Global", name: bestOverall.name, hosp: bestOverall.hospital, color: bestOverall.color },
+    { icon: "🎓", label: "Meilleure Formation",   name: bestFormation.icon + " " + bestFormation.name, hosp: bestFormation.hospital, color: bestFormation.color },
+    { icon: "😴", label: "Moins de Charge",        name: leastCharge.icon + " " + leastCharge.name, hosp: leastCharge.hospital, color: leastCharge.color },
+    { icon: "🕊️", label: "Plus de Liberté",        name: mostFree.icon + " " + mostFree.name, hosp: mostFree.hospital, color: mostFree.color },
+    { icon: "😇", label: "Moins Toxique",          name: leastToxic.icon + " " + leastToxic.name, hosp: leastToxic.hospital, color: leastToxic.color },
+  ];
+
+  document.getElementById("stats-banner").innerHTML = stats.map((s) => `
+    <div class="stat-card" style="border-color:${s.color}33">
+      <div class="stat-icon">${s.icon}</div>
+      <div class="stat-label">${s.label}</div>
+      <div class="stat-value" style="color:${s.color}">${s.name}</div>
+      <div class="stat-sub">${s.hosp}</div>
+    </div>
+  `).join("");
+}
+
+// ============================================================
+//  SORT & FILTER
+// ============================================================
+
+function getSortedFiltered() {
+  const sortVal    = document.getElementById("sort-select").value;
+  const filterSpec = document.getElementById("filter-specialty").value;
+  let data = [...TERRAINS];
+  if (filterSpec !== "all") data = data.filter((t) => t.specialty === filterSpec);
+  data.sort((a, b) => {
+    switch (sortVal) {
+      case "formation_desc":  return b.scores.formation - a.scores.formation;
+      case "charge_asc":      return a.scores.charge - b.scores.charge;
+      case "toxicite_asc":    return a.scores.toxicite - b.scores.toxicite;
+      case "liberte_desc":    return b.scores.liberte - a.scores.liberte;
+      case "ambiance_desc":   return b.scores.ambiance - a.scores.ambiance;
+      default:                return parseFloat(getOverallScore(b)) - parseFloat(getOverallScore(a));
+    }
+  });
+  return data;
+}
+
+function refresh() {
+  const data = getSortedFiltered();
+  buildCards(data);
+  buildComparisonChart(data);
+}
+
+// ============================================================
+//  INIT
+// ============================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  buildStats();
+  refresh();
+  buildOverviewChart();
+
+  document.getElementById("sort-select").addEventListener("change", refresh);
+  document.getElementById("filter-specialty").addEventListener("change", refresh);
+  document.getElementById("compare-param").addEventListener("change", () => {
+    buildComparisonChart(getSortedFiltered());
+  });
+
+  document.getElementById("modal").addEventListener("click", (e) => {
+    if (e.target.id === "modal") closeModal();
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+});
