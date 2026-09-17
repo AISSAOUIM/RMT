@@ -1586,7 +1586,949 @@ const TERRAINS = [
     summary:
       "Équipe agréable et non toxique. Cependant, le service impose de rester jusqu'à 15h tous les jours même s'il n'y a absolument rien à faire.",
   },
+
+  // ── NEW BATCH 4 : TERRAINS CHIRURGICAUX ──────────────────
+
+  {
+    id: 51,
+    name: "ORL",
+    hospital: "Beni Messous",
+    specialty: "ORL",
+    icon: "👂",
+    color: "#d946ef",
+    period: "P3",
+    effectif: 9,
+    gardes: true,
+    gardeFreq: "Garde / 12",
+    roulement: true,
+    scores: {
+      charge: 3,
+      toxicite: 2,
+      formation: 6,
+      liberte: 8,
+      ambiance: 8,
+    },
+    highlights: [
+      "Parmi les terrains chir les plus légers",
+      "Garde chaque 12 (roulement avec R4+R1)",
+      "1 à 2 astreintes par mois en journée",
+      "Gérer le box seul après apprentissage",
+      "Roulement officieux entre internes",
+    ],
+    badge: "🕊️ Chirurgie Légère",
+    summary:
+      "Un des meilleurs terrains chirurgicaux car très léger. Roulement officieux très avantageux et bonne entente avec les résidents.",
+  },
+  {
+    id: 52,
+    name: "Orthopédie",
+    hospital: "Mustapha",
+    specialty: "orthopédie",
+    icon: "🦴",
+    color: "#0f766e",
+    period: "P1",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Garde / 5",
+    roulement: false,
+    scores: {
+      charge: 8,
+      toxicite: 3,
+      formation: 7,
+      liberte: 5,
+      ambiance: 6,
+    },
+    highlights: [
+      "Gardes très chargées l'été (+200 patients)",
+      "Autonomie au box et salle de soins (attelles)",
+      "Patients parfois agressifs la nuit",
+      "Beaucoup de bagarres et social",
+      "Pas de toxicité de l'équipe",
+    ],
+    badge: "⚡ Très Chargé l'été",
+    summary:
+      "Très formateur pour les urgences ortho mais très fatiguant surtout en été (AVP). À faire en début d'internat (P1/P2) tant qu'on a de l'énergie. L'équipe médicale n'est pas toxique mais les patients peuvent l'être.",
+  },
+  {
+    id: 53,
+    name: "UMC",
+    hospital: "Beni Messous",
+    specialty: "UMC",
+    icon: "🚑",
+    color: "#dc2626",
+    period: "P2",
+    effectif: 7,
+    gardes: true,
+    gardeFreq: "Monôme",
+    roulement: true,
+    scores: {
+      charge: 9,
+      toxicite: 1,
+      formation: 10,
+      liberte: 3,
+      ambiance: 9,
+    },
+    highlights: [
+      "Apprentissage +++ (intubation, cathéters, massage cardiaque)",
+      "Équipe extrêmement gentille et très pédagogique",
+      "Vrai travail d'équipe, aucune toxicité",
+      "Très intense et fatiguant",
+      "Gérer tous les types d'urgences",
+    ],
+    badge: "🎓 Formation Ultime",
+    summary:
+      "Incroyable terrain pour la formation, vous saurez gérer n'importe quelle urgence à la fin. Équipe en or mais rythme épuisant. Fortement recommandé en P1 ou P2.",
+  },
+  {
+    id: 54,
+    name: "ORL",
+    hospital: "Mustapha",
+    specialty: "ORL",
+    icon: "👂",
+    color: "#d946ef",
+    period: "P1 / P3",
+    effectif: 6,
+    gardes: true,
+    gardeFreq: "Espacée",
+    roulement: true,
+    scores: {
+      charge: 4,
+      toxicite: 2,
+      formation: 8,
+      liberte: 7,
+      ambiance: 9,
+    },
+    highlights: [
+      "Aide au bloc opératoire très formatrice",
+      "Staff, professeurs et agents gentils",
+      "Gardes calmes (1h-2h de sommeil possible)",
+      "Sortie à midi facile, ou roulement",
+      "Responsable indulgente (tghamed l3in)",
+    ],
+    badge: "👍 Très Bon Terrain",
+    summary:
+      "Très bon équilibre. L'équipe est bienveillante et l'accès au bloc est un gros plus. La charge est gérable avec un système de roulement facile à mettre en place.",
+  },
+  {
+    id: 55,
+    name: "Chirurgie Générale",
+    hospital: "Kouba",
+    specialty: "chirurgie générale",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "P1",
+    effectif: 12,
+    gardes: true,
+    gardeFreq: "Garde / 6 (Binôme)",
+    roulement: true,
+    scores: {
+      charge: 6,
+      toxicite: 1,
+      formation: 9,
+      liberte: 6,
+      ambiance: 10,
+    },
+    highlights: [
+      "Accès illimité au bloc (aide op)",
+      "Meilleur stage, très bonne ambiance",
+      "Gérer le box seul de 8h à...",
+      "Aucun travail de coursier ou évac",
+      "Équipe très à l'écoute et disponible",
+    ],
+    badge: "⭐ Coup de Coeur",
+    summary:
+      "Le meilleur stage de chirurgie selon beaucoup. Immersion totale dans la spécialité avec beaucoup de bloc et ZÉRO toxicité. Idéal en P1.",
+  },
+  {
+    id: 56,
+    name: "Neurochirurgie",
+    hospital: "Ait Idir",
+    specialty: "neurochirurgie",
+    icon: "🧠",
+    color: "#6366f1",
+    period: "P1",
+    effectif: 6,
+    gardes: true,
+    gardeFreq: "Garde / 6",
+    roulement: false,
+    scores: {
+      charge: 4,
+      toxicite: 2,
+      formation: 6,
+      liberte: 5,
+      ambiance: 7,
+    },
+    highlights: [
+      "Présence 8h - 14h (contre-visite)",
+      "Programme de bloc chaque jour",
+      "Beaucoup d'évacuations",
+      "Garde pas trop chargée",
+      "Validation du stage demande un peu de patience",
+    ],
+    badge: "🚑 Beaucoup d'évacs",
+    summary:
+      "Un terrain plutôt tranquille et non toxique, mais qui souffre d'un grand nombre d'évacuations. Vous pourrez y apprendre et aller au bloc.",
+  },
+  {
+    id: 57,
+    name: "Chirurgie Générale",
+    hospital: "Beni Messous",
+    specialty: "chirurgie générale",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "P1",
+    effectif: 12,
+    gardes: true,
+    gardeFreq: "Garde / 6 (Binôme)",
+    roulement: false,
+    scores: {
+      charge: 8,
+      toxicite: 2,
+      formation: 8,
+      liberte: 4,
+      ambiance: 8,
+    },
+    highlights: [
+      "Très fatiguant et anarchique",
+      "3 unités (4e étage, PU, UMC)",
+      "Très impliquant et formateur (exam cliniques, bilans)",
+      "Pas de roulement en P1, sortie vers 14h",
+      "Garde très chargée au PU",
+    ],
+    badge: "⚡ Anarchique mais Formateur",
+    summary:
+      "Un terrain très lourd et fatigant mais qui vaut la peine pour la formation. Vous serez pleinement intégré à l'équipe et toucherez à tout.",
+  },
+  {
+    id: 58,
+    name: "UMC",
+    hospital: "BEO",
+    specialty: "UMC",
+    icon: "🚑",
+    color: "#dc2626",
+    period: "P1",
+    effectif: 8,
+    gardes: true,
+    gardeFreq: "Garde / 8",
+    roulement: false,
+    scores: {
+      charge: 8,
+      toxicite: 1,
+      formation: 8,
+      liberte: 2,
+      ambiance: 8,
+    },
+    highlights: [
+      "Présence stricte 8h30 - 16h00",
+      "Zéro travail ingrat / coursier",
+      "Très formateur, on vous laisse dormir si la garde est calme",
+      "1.5 mois PU, 1.5 mois Service",
+      "Absences non tolérées (risque invalidation)",
+    ],
+    badge: "⏱️ Présence Stricte",
+    summary:
+      "Excellent pour la formation avec une équipe qui respecte les internes. Le point noir est l'obligation de présence stricte jusqu'à 16h tous les jours.",
+  },
+  {
+    id: 59,
+    name: "Chirurgie Générale",
+    hospital: "Zmirli",
+    specialty: "chirurgie générale",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "P1 / P3",
+    effectif: 12,
+    gardes: true,
+    gardeFreq: "Garde / 6 (Binôme)",
+    roulement: true,
+    scores: {
+      charge: 5,
+      toxicite: 1,
+      formation: 7,
+      liberte: 8,
+      ambiance: 9,
+    },
+    highlights: [
+      "Aide au bloc très intéressante",
+      "Zéro toxicité du R1 au Professeur",
+      "Sortie à 11h/12h",
+      "Roulement possible (si bonne entente avec secrétaire)",
+      "Urgences abdominales +++",
+    ],
+    badge: "👍 Recommandé",
+    summary:
+      "Un terrain de chirurgie allégé avec une équipe formidable. Bon équilibre entre temps libre, ambiance et apprentissage au bloc.",
+  },
+  {
+    id: 60,
+    name: "Chirurgie (Pr Mahmoudi)",
+    hospital: "Alger",
+    specialty: "chirurgie générale",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "Multi",
+    effectif: 12,
+    gardes: true,
+    gardeFreq: "Garde / 20",
+    roulement: true,
+    scores: {
+      charge: 4,
+      toxicite: 1,
+      formation: 6,
+      liberte: 8,
+      ambiance: 10,
+    },
+    highlights: [
+      "Garde tous les 20 jours !",
+      "Pr Mahmoudi extrêmement bienveillant",
+      "Roulement mensuel entre Hommes, Femmes, Réa",
+      "Accompagnement explorations (CPRE, Scanner...)",
+      "Aucun pointage, sortie vers 13h-14h",
+    ],
+    badge: "🌟 Le Paradis",
+    summary:
+      "Le paradis sur terre : professeur extrêmement gentil, charge de garde quasi inexistante (1/20), flexibilité totale. Une perle rare.",
+  },
+
+  // ── NEW BATCH 5 : TERRAINS CHIRURGICAUX ──────────────────
+
+  {
+    id: 61,
+    name: "Chir A (Oncologie)",
+    hospital: "CPMC",
+    specialty: "chirurgie générale",
+    type: "chirurgie",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "P1",
+    effectif: 6,
+    gardes: true,
+    gardeFreq: "Garde / 7",
+    roulement: false,
+    scores: {
+      charge: 5,
+      toxicite: 2,
+      formation: 6,
+      liberte: 6,
+      ambiance: 8,
+    },
+    highlights: [
+      "Gardes calmes (service oncologie = anciens patients)",
+      "Présentation colloque + aide au bloc",
+      "TD obligatoire une fois/semaine",
+      "Post garde disponible",
+      "Chambre de garde propre et climatisée",
+    ],
+    badge: "☀️ Gardes Calmes",
+    summary:
+      "Service d'oncologie chirurgicale donc gardes relativement calmes. Bonne ambiance, équipe gentille. Les TD et colloques sont obligatoires.",
+  },
+
+  {
+    id: 62,
+    name: "Chirurgie Générale",
+    hospital: "BEO",
+    specialty: "chirurgie générale",
+    type: "chirurgie",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "P1 / P2",
+    effectif: 10,
+    gardes: true,
+    gardeFreq: "Garde / 5 (Binôme)",
+    roulement: false,
+    scores: {
+      charge: 9,
+      toxicite: 6,
+      formation: 7,
+      liberte: 1,
+      ambiance: 5,
+    },
+    highlights: [
+      "Présence 7h30 - 16h TOUS les jours",
+      "Garde binôme chaque 5 (PU + Service)",
+      "3 services : Réa, Homme, Femme",
+      "Écriture obs REA avant 8h chaque matin",
+      "Très fatiguant, surveillance rapprochée à la Réa",
+    ],
+    badge: "⚡ Ultra Chargé",
+    summary:
+      "Terrain très exigeant en présence et en charge. Formateur mais épuisant. Le P2 le note toxique. À éviter si vous avez le choix.",
+  },
+
+  {
+    id: 63,
+    name: "Chir Générale B (Sans Garde)",
+    hospital: "CPMC",
+    specialty: "chirurgie générale",
+    type: "chirurgie",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "Multi",
+    effectif: 8,
+    gardes: false,
+    gardeFreq: "Aucune",
+    roulement: false,
+    scores: {
+      charge: 4,
+      toxicite: 2,
+      formation: 5,
+      liberte: 7,
+      ambiance: 7,
+    },
+    highlights: [
+      "5/5 sans aucune garde",
+      "Uniquement journées de service",
+      "Très léger pour un terrain chirurgical",
+    ],
+    badge: "🕊️ 0 Garde",
+    summary:
+      "Rarissime terrain chirurgical sans garde. Idéal si vous voulez un semestre calme. Formation limitée mais rythme très confortable.",
+  },
+
+  {
+    id: 64,
+    name: "UMC",
+    hospital: "Mustapha",
+    specialty: "UMC",
+    type: "chirurgie",
+    icon: "🚑",
+    color: "#dc2626",
+    period: "Multi",
+    effectif: 8,
+    gardes: true,
+    gardeFreq: "Garde / 6",
+    roulement: false,
+    scores: {
+      charge: 7,
+      toxicite: 4,
+      formation: 5,
+      liberte: 2,
+      ambiance: 5,
+    },
+    highlights: [
+      "INTERDIT d'aller au box (pas sécurisé)",
+      "Affecté en soins intensifs uniquement",
+      "8h00 - 16h00 strictes, patients instables",
+      "Gazos, sondages, avis à répétition",
+      "Certains résidents gentils, d'autres non",
+    ],
+    badge: "⚠️ Pas de Box",
+    summary:
+      "Déçevant pour ceux qui veulent gérer le box. Vous serez en réa/soins intensifs uniquement. Formateur pour la surveillance mais pas pour les urgences chirurgicales.",
+  },
+
+  {
+    id: 65,
+    name: "Chir Générale (Bitraria)",
+    hospital: "Alger",
+    specialty: "chirurgie générale",
+    type: "chirurgie",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "P1 / P3",
+    effectif: 16,
+    gardes: true,
+    gardeFreq: "Garde / 6-8",
+    roulement: true,
+    scores: {
+      charge: 6,
+      toxicite: 2,
+      formation: 7,
+      liberte: 6,
+      ambiance: 9,
+    },
+    highlights: [
+      "Dr. Boughezala très gentille",
+      "Accès au bloc opératoire",
+      "Sortie possible avant 13h (après contre-visite)",
+      "13 à 20 patients par garde",
+      "Day off possible (pas vrai roulement)",
+    ],
+    badge: "👍 Bonne Ambiance",
+    summary:
+      "Terrain agréable et formateur avec une responsable bienveillante. Accès au bloc, bonne ambiance, sortie raisonnable. Recommandé.",
+  },
+
+  {
+    id: 66,
+    name: "Neurochirurgie",
+    hospital: "BEO",
+    specialty: "neurochirurgie",
+    type: "chirurgie",
+    icon: "🧠",
+    color: "#6366f1",
+    period: "P4",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Garde / 5 (Service)",
+    roulement: false,
+    scores: {
+      charge: 5,
+      toxicite: 2,
+      formation: 5,
+      liberte: 5,
+      ambiance: 7,
+    },
+    highlights: [
+      "Service neurochir pédiatrique",
+      "Avis + radio + scanner en masse",
+      "Garde service uniquement (pas de PU)",
+      "Enfants généralement stables",
+      "Responsable changé en cours de période",
+    ],
+    badge: "👶 Pédiatrie",
+    summary:
+      "Terrain de neurochirurgie pédiatrique calme. Orienté surveillance et avis. Peu de formation pratique mais enfants généralement stables la nuit.",
+  },
+
+  {
+    id: 67,
+    name: "Chir Thoracique",
+    hospital: "BEO",
+    specialty: "chirurgie thoracique",
+    type: "chirurgie",
+    icon: "🫁",
+    color: "#0369a1",
+    period: "P1",
+    effectif: 8,
+    gardes: true,
+    gardeFreq: "Garde / 8",
+    roulement: false,
+    scores: {
+      charge: 5,
+      toxicite: 8,
+      formation: 4,
+      liberte: 5,
+      ambiance: 2,
+    },
+    highlights: [
+      "4/5 + garde chaque 8",
+      "TD d'anatomie obligatoires",
+      "Accès au bloc (aide opératoire)",
+      "RÉSIDENTES TRÈS TOXIQUES ⚠️",
+      "Colloque mercredi jusqu'à 17h",
+    ],
+    badge: "☠️ TOXIQUE — ÉVITER",
+    summary:
+      "Terrain à fuir absolument selon les avis. Les résidentes sont extrêmement toxiques. Malgré un accès au bloc, l'ambiance terrible ruine le stage.",
+  },
+
+  {
+    id: 68,
+    name: "ORL",
+    hospital: "BEO",
+    specialty: "ORL",
+    type: "chirurgie",
+    icon: "👂",
+    color: "#d946ef",
+    period: "P1",
+    effectif: 6,
+    gardes: true,
+    gardeFreq: "Garde / 6 (Monôme)",
+    roulement: false,
+    scores: {
+      charge: 7,
+      toxicite: 2,
+      formation: 8,
+      liberte: 5,
+      ambiance: 8,
+    },
+    highlights: [
+      "Garde /6 P1 → /9 P2 → /12 P3 → /15 P4",
+      "Très formateur, beaucoup de gestes",
+      "Résidents majoritairement haylin",
+      "RDS lourd (archives + statistiques)",
+      "CDS accessible pour les problèmes",
+    ],
+    badge: "📈 Formation Progressive",
+    summary:
+      "ORL très formateur avec un système de garde qui s'allège au fil des périodes. La formation pratique est réelle mais le rapport de stage est une vraie corvée.",
+  },
+
+  {
+    id: 69,
+    name: "Neurochirurgie",
+    hospital: "Mustapha",
+    specialty: "neurochirurgie",
+    type: "chirurgie",
+    icon: "🧠",
+    color: "#6366f1",
+    period: "P1 / P2",
+    effectif: 6,
+    gardes: true,
+    gardeFreq: "Garde / 3 (Binôme)",
+    roulement: false,
+    scores: {
+      charge: 9,
+      toxicite: 2,
+      formation: 6,
+      liberte: 2,
+      ambiance: 7,
+    },
+    highlights: [
+      "Garde chaque 3 jours (6 internes seulement)",
+      "Box géré seul, résidents aux abonnés absents",
+      "200+ patients par garde courante",
+      "Chambre de garde dans un état catastrophique",
+      "Déchocage géré seuls des fois",
+    ],
+    badge: "💀 Garde / 3j",
+    summary:
+      "Garde tous les 3 jours, c'est clairement l'enfer. Très fatigant, chambre ignoble, effectif insuffisant. Conseil : faites de la chir générale à la place.",
+  },
+
+  {
+    id: 70,
+    name: "Chir Générale (Rahmouni)",
+    hospital: "Alger",
+    specialty: "chirurgie générale",
+    type: "chirurgie",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "P1",
+    effectif: 10,
+    gardes: true,
+    gardeFreq: "Garde / 10",
+    roulement: false,
+    scores: {
+      charge: 5,
+      toxicite: 2,
+      formation: 7,
+      liberte: 7,
+      ambiance: 8,
+    },
+    highlights: [
+      "Garde seulement chaque 10 (light)",
+      "Passage au bloc obligatoire",
+      "Colloque mardi avec présentation",
+      "Sortie vers 11h (service)",
+      "TD à présenter",
+    ],
+    badge: "😊 Équilibré",
+    summary:
+      "Bon terrain avec un rythme équilibré. La garde rare (1/10) est un vrai avantage. Formation correcte grâce au bloc et aux colloques.",
+  },
+
+  {
+    id: 71,
+    name: "CCI",
+    hospital: "Belfort",
+    specialty: "CCI",
+    type: "chirurgie",
+    icon: "🦴",
+    color: "#0f766e",
+    period: "P3",
+    effectif: 8,
+    gardes: true,
+    gardeFreq: "Effectif dépendant",
+    roulement: false,
+    scores: {
+      charge: 8,
+      toxicite: 1,
+      formation: 9,
+      liberte: 3,
+      ambiance: 9,
+    },
+    highlights: [
+      "Terrain très formateur et organisé",
+      "Zéro toxicité — toute l'équipe gentille",
+      "Vous gérez les attelles + box urgences",
+      "Hyperchargé en été (éviter P3/P4 estival)",
+      "TD mercredi + colloque lundi AP",
+    ],
+    badge: "🎓 Top Formation",
+    summary:
+      "Un des meilleurs terrains chirurgicaux : zéro toxicité, très formateur et bien organisé. Attention : hyperchargé en été. À faire en P1/P2 de préférence.",
+  },
+
+  {
+    id: 72,
+    name: "Chirurgie (Ain Taya)",
+    hospital: "Ain Taya",
+    specialty: "chirurgie générale",
+    type: "chirurgie",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "Multi",
+    effectif: 8,
+    gardes: true,
+    gardeFreq: "Inconnue",
+    roulement: false,
+    scores: {
+      charge: 9,
+      toxicite: 9,
+      formation: 3,
+      liberte: 1,
+      ambiance: 1,
+    },
+    highlights: [
+      "⛔ CONSENSUS UNANIME : RUN",
+      "Avis unanimement négatifs",
+      "À éviter absolument selon tous les témoignages",
+    ],
+    badge: "🚫 RUN — À ÉVITER",
+    summary:
+      "Terrain à éviter à tout prix selon l'unanimité des internes qui y sont passés. Aucun avis positif n'a été rapporté.",
+  },
+
+  {
+    id: 73,
+    name: "Chir Générale (Bainem)",
+    hospital: "Bainem",
+    specialty: "chirurgie générale",
+    type: "chirurgie",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "P2",
+    effectif: 10,
+    gardes: true,
+    gardeFreq: "Garde / 5 (Binôme)",
+    roulement: false,
+    scores: {
+      charge: 8,
+      toxicite: 7,
+      formation: 6,
+      liberte: 1,
+      ambiance: 3,
+    },
+    highlights: [
+      "Présence 8h - 16h MÊME pendant Ramadan",
+      "Zéro congé, zéro roulement",
+      "Absences et retards : risque invalidation",
+      "Toxicité ++++ selon le P2 (résidents yetbedlo)",
+      "Formation correcte mais trop contraignant",
+    ],
+    badge: "⚠️ À Éviter",
+    summary:
+      "Terrain à éviter. Aucun congé, présence ultra stricte, toxicité rapportée. Le côté formateur ne compense pas le manque total de liberté et l'ambiance difficile.",
+  },
+
+  {
+    id: 74,
+    name: "Orthopédie",
+    hospital: "Thenia",
+    specialty: "orthopédie",
+    type: "chirurgie",
+    icon: "🦴",
+    color: "#0f766e",
+    period: "Multi",
+    effectif: 8,
+    gardes: true,
+    gardeFreq: "Garde / 4",
+    roulement: false,
+    scores: {
+      charge: 10,
+      toxicite: 9,
+      formation: 4,
+      liberte: 1,
+      ambiance: 1,
+    },
+    highlights: [
+      "Garde /4 → Bloc obligatoire → Service → Garde",
+      "Prof TRÈS TOXIQUE — rapport de garde humiliant",
+      "250 à 350 patients par garde",
+      "Observations de 2 pages A4 obligatoires",
+      "Patients agressifs et difficiles",
+    ],
+    badge: "💀 PIRE TERRAIN",
+    summary:
+      "Un des pires terrains de l'internat selon les témoignages. Rythme impossible (garde/4 + bloc), professeure extrêmement toxique, gardes infernales. À éviter absolument.",
+  },
+
+  {
+    id: 75,
+    name: "Chir Générale (Thenia)",
+    hospital: "Thenia",
+    specialty: "chirurgie générale",
+    type: "chirurgie",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "P1 / P2",
+    effectif: 10,
+    gardes: true,
+    gardeFreq: "Garde / 4-5",
+    roulement: false,
+    scores: {
+      charge: 7,
+      toxicite: 1,
+      formation: 9,
+      liberte: 5,
+      ambiance: 10,
+    },
+    highlights: [
+      "Équipe traite les internes comme des résidents",
+      "Gestes +++ (sutures, sondages, massage cardiaque)",
+      "Accès au bloc avec participation active",
+      "Présentation au rapport de garde",
+      "Urgences chirurgicales viscérales variées",
+    ],
+    badge: "❤️ Coup de Cœur",
+    summary:
+      "Meilleur terrain de chirurgie générale pour beaucoup. Inclusion totale dans l'équipe, formation exceptionnelle, ambiance chaleureuse. À faire en P1/P2 absolument.",
+  },
+
+  {
+    id: 76,
+    name: "CCI",
+    hospital: "Beni Messous",
+    specialty: "CCI",
+    type: "chirurgie",
+    icon: "🦴",
+    color: "#0f766e",
+    period: "P1 / P2",
+    effectif: 8,
+    gardes: true,
+    gardeFreq: "Garde / 6 (Monôme)",
+    roulement: true,
+    scores: {
+      charge: 7,
+      toxicite: 3,
+      formation: 7,
+      liberte: 6,
+      ambiance: 6,
+    },
+    highlights: [
+      "Garde monôme chaque 6 (24h)",
+      "Ateliers jeudi + TD mercredi",
+      "Roulement en journée de semaine",
+      "Gardes chargées monôme",
+      "Équipe +/- selon les résidents",
+    ],
+    badge: "⚖️ Moyen",
+    summary:
+      "Terrain CCI avec des gardes monômes chaque 6 jours ce qui est fatigant. Roulement en journée de semaine possible. Équipe variable selon les résidents.",
+  },
+
+  {
+    id: 77,
+    name: "Chirurgie Maxillo-Faciale",
+    hospital: "Alger",
+    specialty: "chirurgie maxillo-faciale",
+    type: "chirurgie",
+    icon: "🦷",
+    color: "#7c3aed",
+    period: "P1",
+    effectif: 8,
+    gardes: true,
+    gardeFreq: "Garde / 4-5 (Binôme)",
+    roulement: false,
+    scores: {
+      charge: 4,
+      toxicite: 2,
+      formation: 8,
+      liberte: 7,
+      ambiance: 8,
+    },
+    highlights: [
+      "Terrain le plus léger en chirurgie",
+      "Sutures 50-60 patients/garde en moyenne",
+      "Réduction luxation ATM, examen fractures",
+      "Sommeil possible à partir de 2h du matin",
+      "4 TD intéressants par semaine",
+    ],
+    badge: "🏆 Chirurgie la Plus Légère",
+    summary:
+      "Le terrain chirurgical le plus léger en garde. Gestes pratiques variés et intéressants (sutures, luxations ATM, fractures). Équipe sympa et gardes gérables. Fortement recommandé.",
+  },
+
+  {
+    id: 78,
+    name: "Chir Générale (Debbussy)",
+    hospital: "Alger",
+    specialty: "chirurgie générale",
+    type: "chirurgie",
+    icon: "🔪",
+    color: "#b91c1c",
+    period: "P2",
+    effectif: 10,
+    gardes: true,
+    gardeFreq: "Garde / 5",
+    roulement: false,
+    scores: {
+      charge: 9,
+      toxicite: 9,
+      formation: 5,
+      liberte: 1,
+      ambiance: 1,
+    },
+    highlights: [
+      "⛔ PIRE TERRAIN selon les avis",
+      "Présence 8h + bloc jusque 17h + colloque",
+      "Homework à corriger + 2 TDs obligatoires",
+      "Aucun avantage rapporté",
+      "Très toxique selon les internes",
+    ],
+    badge: "🚫 PIRE TERRAIN",
+    summary:
+      "Terrain unanimement détesté. Charge maximale, équipe toxique, aucune liberté, homework en sus. À éviter absolument.",
+  },
+
+  {
+    id: 79,
+    name: "UMC",
+    hospital: "Ain Taya",
+    specialty: "UMC",
+    type: "chirurgie",
+    icon: "🚑",
+    color: "#dc2626",
+    period: "P1",
+    effectif: 8,
+    gardes: true,
+    gardeFreq: "Garde / 8 (Binôme) + Astreintes WE",
+    roulement: false,
+    scores: {
+      charge: 6,
+      toxicite: 1,
+      formation: 7,
+      liberte: 4,
+      ambiance: 9,
+    },
+    highlights: [
+      "Service 9h-16h + 3 astreintes WE",
+      "PU médical (pas chirurgical)",
+      "CAT urgences, réanimation, gazométrie, sondage",
+      "Professeur et équipe extrêmement sympas",
+      "Mémoire structurée (IMRAD) en P1",
+    ],
+    badge: "🏥 Bagage Généraliste",
+    summary:
+      "UMC médical (pas chirurgical) avec une excellente équipe. Bon pour acquérir les réflexes du généraliste. Mémoire structurée obligatoire mais encadrée par la prof.",
+  },
+
+  {
+    id: 80,
+    name: "Neurochirurgie",
+    hospital: "Zmirli",
+    specialty: "neurochirurgie",
+    type: "chirurgie",
+    icon: "🧠",
+    color: "#6366f1",
+    period: "P1 / P3",
+    effectif: 5,
+    gardes: true,
+    gardeFreq: "Garde / 5 (Monôme)",
+    roulement: true,
+    scores: {
+      charge: 6,
+      toxicite: 4,
+      formation: 5,
+      liberte: 6,
+      ambiance: 7,
+    },
+    highlights: [
+      "Rapport de garde OBLIGATOIRE à 8h30 (retard = interdit d'entrée)",
+      "Roulement officieux possible après 1er mois",
+      "Astreinte monôme (sortie 12-13h)",
+      "Visite générale lundi même en post-garde",
+      "Prof stricte mais terrain tolérable",
+    ],
+    badge: "⏰ RDG Strict",
+    summary:
+      "Terrain neurochir strict sur la présence au RDG. Roulement officieux possible après un mois. La prof surveille mais ferme les yeux si le travail est fait.",
+  },
 ];
+
 
 // ============================================================
 //  UTILITY FUNCTIONS
@@ -1804,7 +2746,7 @@ function detailBar(label, val, color, hint) {
   return `
     <div class="detail-bar-row">
       <div class="dbr-top"><span>${label}</span><span style="color:${color};font-weight:700">${val}/10</span></div>
-      <div class="dbr-track"><div class="dbr-fill" style="width:${val*10}%;background:${color}"></div></div>
+      <div class="dbr-track"><div class="dbr-fill" style="width:${val * 10}%;background:${color}"></div></div>
       <span class="dbr-hint">${hint}</span>
     </div>
   `;
@@ -1923,18 +2865,18 @@ function buildOverviewChart() {
 
 function buildStats() {
   const bestFormation = TERRAINS.reduce((a, b) => a.scores.formation > b.scores.formation ? a : b);
-  const leastCharge   = TERRAINS.reduce((a, b) => a.scores.charge < b.scores.charge ? a : b);
-  const leastToxic    = TERRAINS.reduce((a, b) => a.scores.toxicite < b.scores.toxicite ? a : b);
-  const mostFree      = TERRAINS.reduce((a, b) => a.scores.liberte > b.scores.liberte ? a : b);
-  const bestOverall   = TERRAINS.reduce((a, b) =>
+  const leastCharge = TERRAINS.reduce((a, b) => a.scores.charge < b.scores.charge ? a : b);
+  const leastToxic = TERRAINS.reduce((a, b) => a.scores.toxicite < b.scores.toxicite ? a : b);
+  const mostFree = TERRAINS.reduce((a, b) => a.scores.liberte > b.scores.liberte ? a : b);
+  const bestOverall = TERRAINS.reduce((a, b) =>
     parseFloat(getOverallScore(a)) > parseFloat(getOverallScore(b)) ? a : b);
 
   const stats = [
     { icon: "🏆", label: "Meilleur Score Global", name: bestOverall.name, hosp: bestOverall.hospital, color: bestOverall.color },
-    { icon: "🎓", label: "Meilleure Formation",   name: bestFormation.icon + " " + bestFormation.name, hosp: bestFormation.hospital, color: bestFormation.color },
-    { icon: "😴", label: "Moins de Charge",        name: leastCharge.icon + " " + leastCharge.name, hosp: leastCharge.hospital, color: leastCharge.color },
-    { icon: "🕊️", label: "Plus de Liberté",        name: mostFree.icon + " " + mostFree.name, hosp: mostFree.hospital, color: mostFree.color },
-    { icon: "😇", label: "Moins Toxique",          name: leastToxic.icon + " " + leastToxic.name, hosp: leastToxic.hospital, color: leastToxic.color },
+    { icon: "🎓", label: "Meilleure Formation", name: bestFormation.icon + " " + bestFormation.name, hosp: bestFormation.hospital, color: bestFormation.color },
+    { icon: "😴", label: "Moins de Charge", name: leastCharge.icon + " " + leastCharge.name, hosp: leastCharge.hospital, color: leastCharge.color },
+    { icon: "🕊️", label: "Plus de Liberté", name: mostFree.icon + " " + mostFree.name, hosp: mostFree.hospital, color: mostFree.color },
+    { icon: "😇", label: "Moins Toxique", name: leastToxic.icon + " " + leastToxic.name, hosp: leastToxic.hospital, color: leastToxic.color },
   ];
 
   document.getElementById("stats-banner").innerHTML = stats.map((s) => `
@@ -1952,18 +2894,20 @@ function buildStats() {
 // ============================================================
 
 function getSortedFiltered() {
-  const sortVal    = document.getElementById("sort-select").value;
+  const sortVal = document.getElementById("sort-select").value;
   const filterSpec = document.getElementById("filter-specialty").value;
+  const filterType = document.getElementById("filter-type").value;
   let data = [...TERRAINS];
+  if (filterType !== "all") data = data.filter((t) => (t.type || "médecine") === filterType);
   if (filterSpec !== "all") data = data.filter((t) => t.specialty === filterSpec);
   data.sort((a, b) => {
     switch (sortVal) {
-      case "formation_desc":  return b.scores.formation - a.scores.formation;
-      case "charge_asc":      return a.scores.charge - b.scores.charge;
-      case "toxicite_asc":    return a.scores.toxicite - b.scores.toxicite;
-      case "liberte_desc":    return b.scores.liberte - a.scores.liberte;
-      case "ambiance_desc":   return b.scores.ambiance - a.scores.ambiance;
-      default:                return parseFloat(getOverallScore(b)) - parseFloat(getOverallScore(a));
+      case "formation_desc": return b.scores.formation - a.scores.formation;
+      case "charge_asc": return a.scores.charge - b.scores.charge;
+      case "toxicite_asc": return a.scores.toxicite - b.scores.toxicite;
+      case "liberte_desc": return b.scores.liberte - a.scores.liberte;
+      case "ambiance_desc": return b.scores.ambiance - a.scores.ambiance;
+      default: return parseFloat(getOverallScore(b)) - parseFloat(getOverallScore(a));
     }
   });
   return data;
@@ -1985,6 +2929,7 @@ document.addEventListener("DOMContentLoaded", () => {
   buildOverviewChart();
 
   document.getElementById("sort-select").addEventListener("change", refresh);
+  document.getElementById("filter-type").addEventListener("change", refresh);
   document.getElementById("filter-specialty").addEventListener("change", refresh);
   document.getElementById("compare-param").addEventListener("change", () => {
     buildComparisonChart(getSortedFiltered());
