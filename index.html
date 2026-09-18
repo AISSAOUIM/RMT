@@ -17,8 +17,7 @@
     <div class="header-badge">🏥 7e Médecine · Algérie · 2026</div>
     <h1 class="header-title">Rate My Terrain</h1>
     <p class="header-subtitle">
-      Comparaison interactive des terrains d'internat — basé sur les témoignages réels des internes.
-      11 terrains analysés sur 5 critères.
+      Guide interactif et comparatif des terrains d'internat — 98 terrains répertoriés avec rangs d'épuisement officiels et avis authentiques des internes.
     </p>
   </header>
 
@@ -32,7 +31,7 @@
     &nbsp;·&nbsp; <strong>🎓 Formation</strong> : élevé = très formateur
     &nbsp;·&nbsp; <strong>🕊️ Liberté</strong> : élevé = beaucoup de roulement / temps libre
     &nbsp;·&nbsp; <strong>🤝 Ambiance</strong> : élevé = très bonne atmosphère
-    &nbsp;·&nbsp; Le <strong>Score Global</strong> pondère tous ces facteurs.
+    &nbsp;·&nbsp; <strong>🎯 Clôture</strong> : Rang de fermeture au choix des postes (P1–P4).
   </div>
 
   <!-- ══════════════════════════════════════════════
@@ -60,9 +59,18 @@
 
     <label for="filter-type">Type :</label>
     <select id="filter-type" class="ctrl-select" aria-label="Filtre par type">
-      <option value="all">🏥 Tous les terrains</option>
+      <option value="all">🏥 Tous les types</option>
       <option value="médecine">💊 Médecine</option>
       <option value="chirurgie">🔪 Chirurgie</option>
+    </select>
+
+    <hr class="controls-divider" />
+
+    <label for="filter-status">Statut :</label>
+    <select id="filter-status" class="ctrl-select" aria-label="Filtre par statut">
+      <option value="all">📋 Tous les terrains (98)</option>
+      <option value="rated">⭐ Évalués avec avis (82)</option>
+      <option value="unrated">⏳ En attente d'avis (16)</option>
     </select>
 
     <hr class="controls-divider" />

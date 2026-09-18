@@ -471,6 +471,203 @@ body::before {
 .dbr-hint { font-size: .68rem; color: var(--text-3); margin-top: 2px; display: block; }
 
 /* ============================================================
+   EMPTY / UNRATED TERRAIN CARDS & CLÔTURE DE POSTES
+   ============================================================ */
+.card-unrated {
+  border-style: dashed;
+  border-color: rgba(148, 163, 184, 0.25);
+  background: rgba(17, 24, 39, 0.65);
+}
+
+.card-unrated:hover {
+  border-color: #94a3b8;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px #94a3b833;
+}
+
+.card-overall-empty {
+  border: 2px dashed #475569;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overall-num-na {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.card-epuisement {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+
+.ep-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.ep-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+.ep-row-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.ep-cell {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.ep-p {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.ep-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 4px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.ep-ne {
+  background: rgba(34, 197, 94, 0.15);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.ep-hot {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.ep-std {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.card-epuisement-compact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  font-size: 0.7rem;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  margin-bottom: 14px;
+}
+
+.ep-compact-label {
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+.ep-compact-val {
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.detail-btn-unrated {
+  background: rgba(148, 163, 184, 0.1);
+  border-color: #64748b;
+  color: #cbd5e1;
+}
+
+.detail-btn-unrated:hover {
+  background: rgba(148, 163, 184, 0.2);
+  color: #f8fafc;
+}
+
+.unrated-alert {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+
+.unrated-alert-icon {
+  font-size: 1.8rem;
+}
+
+.modal-epuisement-table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 16px 0;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.met-lbl {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-2);
+  margin-bottom: 4px;
+}
+
+.met-val {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #818cf8;
+}
+
+.unrated-info-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+.unrated-info-card h4 {
+  color: var(--text-1);
+  margin-bottom: 10px;
+}
+
+.unrated-info-card ul {
+  padding-left: 20px;
+}
+
+.unrated-info-card li {
+  margin-bottom: 6px;
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .app-footer {
